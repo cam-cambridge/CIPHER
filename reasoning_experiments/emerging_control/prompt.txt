@@ -1,0 +1,12 @@
+{system}
+
+Analyse the given information and select the most relevant adjustment.
+Pay attention to the validity of your statements!
+While changing the extrusion flow rate may seem the best option, it is not always the best option.
+    Consider physics, material properties, the current temperature and other things you know about additive manufacturing.
+Suggest a single G-code command for the most effective parameter adjustment, if an adjustment is needed.
+
+**Output the gcode command in the gcode tag in this format: ```gcode <command>```**
+    No other information should be within the gcode tag. Do not change lines either.
+    If a command is not needed, just say ```gcode no_command```.
+    If a command is needed, provide the G-code command within the ```gcode <command>``` tags.

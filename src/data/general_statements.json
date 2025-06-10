@@ -1,0 +1,61 @@
+{
+  "general_statements": [
+    {
+      "statement": "This is the nozzle of a 3D printer."
+    },
+    {
+      "statement": "The nozzle extrudes material onto the print bed."
+    },
+    {
+      "statement": "The nozzle appears to be moving along a predefined path."
+    },
+    {
+      "statement": "Heated material is coming out of the nozzle."
+    },
+    {
+      "statement": "The nozzle moves in coordination with the print head."
+    },
+    {
+      "statement": "This nozzle is part of the printer’s extrusion system."
+    },
+    {
+      "statement": "The nozzle’s diameter affects the precision of the print."
+    },
+    {
+      "statement": "Material flow through the nozzle seems continuous."
+    },
+    {
+      "statement": "The nozzle is close to the surface of the print bed."
+    },
+    {
+      "statement": "Material is deposited layer by layer through the nozzle."
+    },
+    {
+      "statement": "The nozzle operates within the defined build area."
+    },
+    {
+      "statement": "The nozzle’s position is determined by the printer’s software."
+    },
+    {
+      "statement": "The nozzle occasionally pauses while repositioning."
+    },
+    {
+      "statement": "The nozzle’s alignment is critical for print accuracy."
+    },
+    {
+      "statement": "The nozzle works in tandem with the feed mechanism."
+    },
+    {
+      "statement": "The nozzle path outlines the shape of the printed part."
+    },
+    {
+      "statement": "The nozzle's motion seems smooth and precise."
+    },
+    {
+      "statement": "Material exits the nozzle in a semi-liquid state."
+    },
+    {
+      "statement": "The nozzle’s movement speed influences print quality."
+    }
+  ]
+}

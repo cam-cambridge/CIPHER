@@ -1,0 +1,110 @@
+You are a geometry expert for 3D printers. I want to print a {request}.
+Here is a pseudocode for the gcode generation:
+
+    ```pseudocode
+    # Define the plan
+    plan = {
+        "cylinder": {
+            "type": "circle",
+            "geometric properties": {
+                "radius": 10mm,
+                "height": 40cm,
+                "start_position": [100, 100, 0],
+                "rotation": [0, 0, 0]
+            },
+            "infill": "linear",
+            "infill_density": 100%,
+            "layer_height": 0.2mm,
+            "layers": 200
+        }
+    }
+
+    # Initialize an empty dictionary to hold G-code for each shape
+    shape_gcode_dict = {}
+
+    # Get the shape and its properties
+    shape = plan["cylinder"]
+    shape_name = "cylinder"
+    start_position = shape["geometric properties"]["start_position"]
+    rotation = shape["geometric properties"]["rotation"]
+    radius = shape["geometric properties"]["radius"]
+    height = shape["geometric properties"]["height"]
+    infill = shape["infill"]
+    infill_density = shape["infill_density"]
+    layer_height = shape["layer_height"]
+    num_layers = shape["layers"]
+
+    # Initialize G-code for this shape with startup commands
+    gcode = start_gcode
+
+    # Calculate the number of layers
+    num_layers = int(height / layer_height)
+
+    # Generate G-code for each layer
+    for layer in range(num_layers):
+        # Calculate the z position for this layer
+        z_position = layer * layer_height
+        
+        # Load the boundaries for this layer
+        boundaries = load_shape_boundaries(shape, start_position, rotation, z_position)
+        
+        # Generate G-code for the boundaries
+        for line in boundaries:
+            extrusion = calculate_extrusion_length(line.length)
+            gcode += generate_line_gcode(line, extrusion)
+        
+        # Load the infill for this layer
+        infill_lines = load_shape_infill(shape, infill_density, z_position)
+        
+        # Generate G-code for the infill
+        for line in infill_lines:
+            extrusion = calculate_extrusion_length(line.length)
+            gcode += generate_line_gcode(line, extrusion)
+
+    # Add end commands to the G-code
+    gcode += end_gcode
+
+    # Save the G-code for this shape in the dictionary
+    shape_gcode_dict[shape_name] = gcode
+    ```
+
+
+The functions need to be implemented in python.
+
+These will be useful:
+
+    def calculate extrusion(x1, y1, x2, y2, previous e):
+        distance = math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+        extrusion = distance * 0.04
+        return previous e + extrusion
+
+    def start gcode():
+        return """
+            G21 ; Set units to millimeters
+            G90 ; Use absolute positioning
+            M104 S200 ; Set extruder temperature to 200C
+            M140 S60 ; Set bed temperature to 60C
+            G28 ; Home all axes
+            M109 S200 ; Wait for extruder to reach 200C
+            M190 S60 ; Wait for bed to reach 60C
+            G92 E0 ; Reset extruder
+            G1 Z0.2 F300 ; Move to first layer height
+            G1 X110 Y100 F1500 ; Move to start position
+            G1 F9000
+        """
+
+    def end gcode():
+        return """
+            G1 Z50 F300 ; Lift nozzle
+            M104 S0 ; Turn off extruder
+            M140 S0 ; Turn off bed
+            G28 X0 Y0 ; Home axes
+            M84 ; Disable motors
+        """
+
+    def save gcode(filename, gcode):
+        with open(filename, ’w’) as f:
+            f.write(gcode)
+
+Give your answer in a ```python``` block.
+Go all the way, the produced code must be executable.

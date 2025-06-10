@@ -1,0 +1,64 @@
+{
+  "good_extrusion_statements": [
+    {
+      "statement": "Good extrusion occurs when a 3D printer delivers the exact amount of filament needed, resulting in strong, accurate, and visually appealing prints."
+    },
+    {
+      "statement": "Achieving good extrusion ensures consistent layer adhesion, producing durable and reliable parts with excellent structural integrity."
+    },
+    {
+      "statement": "Good extrusion is characterized by smooth, even layers that stack precisely, creating a flawless surface finish."
+    },
+    {
+      "statement": "With good extrusion, dimensional accuracy is maintained, allowing printed parts to fit perfectly in assemblies and meet design specifications."
+    },
+    {
+      "statement": "Proper extrusion settings prevent over-extrusion or under-extrusion, minimizing material waste and optimizing print efficiency."
+    },
+    {
+      "statement": "Good extrusion enhances inter-layer bonding, resulting in parts that can withstand mechanical stress without delaminating."
+    },
+    {
+      "statement": "When good extrusion is achieved, fine details and intricate geometries are accurately reproduced, making prints visually appealing and functionally precise."
+    },
+    {
+      "statement": "Good extrusion produces clean edges and sharp corners, preserving the intended geometry of the model."
+    },
+    {
+      "statement": "Parts printed with good extrusion have consistent wall thickness, ensuring uniform strength and stability throughout the structure."
+    },
+    {
+      "statement": "Good extrusion prevents the formation of blobs, strings, or gaps, leading to smooth and professional-looking prints."
+    },
+    {
+      "statement": "Achieving good extrusion requires a well-calibrated printer, optimal temperature settings, and high-quality filament with consistent diameter."
+    },
+    {
+      "statement": "Good extrusion ensures the correct infill density, balancing material usage and part strength effectively."
+    },
+    {
+      "statement": "Well-tuned extrusion provides predictable and repeatable results, making it ideal for mass production or functional prototyping."
+    },
+    {
+      "statement": "Good extrusion enables accurate bridging and overhangs by maintaining controlled material flow and precise layer placement."
+    },
+    {
+      "statement": "Consistent extrusion reduces print failures, improving overall productivity and reducing the need for reprinting."
+    },
+    {
+      "statement": "Good extrusion enhances print aesthetics, with uniform surfaces that require minimal post-processing."
+    },
+    {
+      "statement": "Well-calibrated extrusion settings prevent nozzle clogs and material jams, ensuring smooth and uninterrupted printing."
+    },
+    {
+      "statement": "Good extrusion facilitates proper cooling, preventing warping or deformation in finished prints."
+    },
+    {
+      "statement": "Consistent extrusion allows for better performance with multi-material prints, ensuring proper transitions and layer alignment."
+    },
+    {
+      "statement": "Achieving good extrusion requires regular maintenance of the printer, including cleaning the nozzle and checking for wear, to maintain optimal performance."
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+    "under_extrusion_statements": [
+      {
+        "statement": "Under-extrusion occurs when a 3D printer's nozzle delivers less filament than required, leading to weak and incomplete prints, resulting in fragile structures that may easily break."
+      },
+      {
+        "statement": "The most common causes of under-extrusion include a clogged nozzle, insufficient material feed, and improper extrusion settings, which lead to poor adhesion between layers and reduce overall print strength."
+      },
+      {
+        "statement": "Low extruder temperature can cause under-extrusion by preventing the filament from melting adequately, producing brittle or incomplete layers."
+      },
+      {
+        "statement": "Incorrect filament diameter settings in slicing software can lead to under-extrusion if the actual filament diameter is larger than the value entered, causing gaps in the model's surface."
+      },
+      {
+        "statement": "A partially clogged nozzle can still extrude material but may restrict the flow, causing under-extrusion that compromises surface quality and structural integrity."
+      },
+      {
+        "statement": "A worn-out or slipping extruder gear can reduce the grip on the filament, leading to inconsistent feeding and under-extrusion, which may create visible gaps and weak layer bonding."
+      },
+      {
+        "statement": "Moist filament can expand due to absorbed water, increasing resistance in the nozzle and resulting in under-extrusion, causing rough or pitted print surfaces."
+      },
+      {
+        "statement": "Inadequate retraction settings can cause filament jams, leading to under-extrusion during print restarts, leaving holes or voids in the print."
+      },
+      {
+        "statement": "An improperly calibrated extruder stepper motor can lead to under-extrusion if it moves less filament than intended, causing thin or missing layers that compromise print durability."
+      },
+      {
+        "statement": "Excessive print speed can lead to under-extrusion if the nozzle cannot melt and extrude filament quickly enough, resulting in weak and inconsistent prints."
+      },
+      {
+        "statement": "Dirty or misaligned Bowden tubes can increase friction, reducing the filament feed rate and causing under-extrusion, which manifests as poor print accuracy and weak structures."
+      },
+      {
+        "statement": "Insufficient extrusion multiplier settings in the slicer can lead to under-extrusion, as the printer may not feed enough material, leaving voids and thin walls in the print."
+      },
+      {
+        "statement": "Overtightened idler tensioners can flatten the filament, causing additional friction and resistance in the nozzle, which leads to under-extrusion and rough print textures."
+      },
+      {
+        "statement": "Under-extrusion can manifest as gaps between layers, weak walls, or inconsistent extrusion lines in prints, which reduce the structural stability and aesthetic quality of the final model."
+      },
+      {
+        "statement": "Using low-quality filament with inconsistent diameter or composition increases the risk of under-extrusion, producing uneven layers and diminished mechanical properties."
+      },
+      {
+        "statement": "Hotend thermal issues, such as fluctuating or insufficient temperature, can cause inconsistent filament melting and under-extrusion, resulting in brittle prints and incomplete layers."
+      },
+      {
+        "statement": "Incorrect Z-offset calibration can contribute to under-extrusion by reducing nozzle clearance and hindering smooth material flow, causing adhesion problems and incomplete layers."
+      },
+      {
+        "statement": "Filament kinks, tangles, or obstructions on the spool can prevent the extruder from pulling material smoothly, leading to under-extrusion and uneven print surfaces."
+      },
+      {
+        "statement": "Nozzle wear or damage, especially with abrasive filaments like carbon fiber, can enlarge or deform the nozzle, leading to under-extrusion rates and poor surface finishes."
+      },
+      {
+        "statement": "Under-extrusion can be addressed by performing a cold pull to clean the nozzle, ensuring proper extrusion settings, and maintaining the printer's hardware, which helps restore layer consistency and print quality."
+      }
+    ]
+}

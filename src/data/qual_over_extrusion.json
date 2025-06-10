@@ -1,0 +1,65 @@
+{
+    "over_extrusion_statements": [
+      {
+        "statement": "Over-extrusion occurs when a 3D printer's nozzle delivers more filament than required, resulting in excessive material deposition, bulging layers, and poor print quality."
+      },
+      {
+        "statement": "The most common causes of over-extrusion include incorrect extrusion multiplier settings, excessive nozzle temperature, and poor filament calibration, which can result in thicker walls, warping, and reduced dimensional accuracy."
+      },
+      {
+        "statement": "High extrusion multiplier settings in the slicer can lead to over-extrusion by instructing the printer to extrude more material than needed, causing excess material oozing and inconsistent layer stacking."
+      },
+      {
+        "statement": "Excessive nozzle temperature can cause over-extrusion by making the filament too fluid, leading to uncontrolled material flow, droopy features, and a loss of fine print details."
+      },
+      {
+        "statement": "Incorrect filament diameter settings in the slicer can result in over-extrusion if the actual filament diameter is smaller than the entered value, causing uneven surfaces and thick, bulky prints."
+      },
+      {
+        "statement": "Poor filament quality or inconsistent diameter can lead to over-extrusion, producing messy print surfaces and poor overall part aesthetics."
+      },
+      {
+        "statement": "Over-extrusion often results in visible blobs or strings of excess material, which can ruin the print's surface finish and fine details."
+      },
+      {
+        "statement": "When over-extrusion occurs, layers may appear uneven or overly thick, leading to poor layer adhesion and structural weaknesses."
+      },
+      {
+        "statement": "Excess material from over-extrusion can cause dimensional inaccuracies, making printed parts fail to fit properly in assemblies."
+      },
+      {
+        "statement": "Over-extrusion can lead to increased internal stress in parts, causing them to warp or deform after cooling."
+      },
+      {
+        "statement": "A clogged nozzle or partial blockage can sometimes simulate over-extrusion, causing irregular blobs and poor consistency in layers."
+      },
+      {
+        "statement": "Over-extrusion increases print times and material usage unnecessarily, reducing the efficiency of the printing process."
+      },
+      {
+        "statement": "In extreme cases, over-extrusion can cause nozzle collisions with excess material, leading to skipped steps or failed prints."
+      },
+      {
+        "statement": "Thick over-extruded layers can reduce the sharpness of corners and edges, resulting in rounded or imprecise geometries."
+      },
+      {
+        "statement": "Over-extrusion can create weak inter-layer bonding by forming overly thick layers that do not adhere properly to one another."
+      },
+      {
+        "statement": "Excessive filament flow can obscure intricate details, making prints look sloppy or poorly defined."
+      },
+      {
+        "statement": "Over-extrusion often produces a glossy or uneven surface finish, reducing the visual appeal of the printed object."
+      },
+      {
+        "statement": "When over-extrusion occurs, infill areas may become overly dense, leading to excessive weight and wasted filament."
+      },
+      {
+        "statement": "Over-extrusion can cause bridging failures as sagging or excess material accumulates in unsupported areas."
+      },
+      {
+        "statement": "Addressing over-extrusion requires careful adjustment of slicer settings, nozzle temperature, and filament calibration to restore accurate and consistent material flow."
+      }
+    ]
+  }
+  

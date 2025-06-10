@@ -1,0 +1,53 @@
+You are a geometry expert for 3D printers. I want to print a {request}.
+This is the high level plan of how we will position the shapes:
+
+    ```plan
+    {
+        "circle": {
+            "type": "circle",
+            "geometric properties": {
+                "radius": 10mm,
+                "height": 0.2mm,  // single layer, so height is equal to layer height
+                "start_position": [100, 100, 0],
+                "rotation": [0, 0, 0]
+            },
+            "infill": "concentric",
+            "infill_density": 100%,
+            "layer_height": 0.2mm,
+            "layers": 1  // single layer
+        }
+    }
+    ```
+
+
+this should be handled using the following pseudocode:
+
+    # Initialize an empty dictionary to hold G-code for each shape
+    shape_gcode_dict = {}
+
+    for shape in shapes:
+
+        # Initialize G-code for this shape with startup commands
+        gcode = start_gcode
+
+        for layer in layers:
+
+            boundaries(z=layer) = load_shape_boundaries(shape, start_position, rotation)
+            for line in boundaries:
+                extrusion = calculate_extrusion_length(line.length)
+                gcode += generate_line_gcode(line, extrusion)
+
+            infill(z=layer) = load_shape_infill(shape)
+            for line in infill(z=layer):
+                extrusion = calculate_extrusion_length(line.length)
+                gcode += generate_line_gcode(line, extrusion)
+
+        gcode += end_gcode
+
+        # Save G-code for this shape in the dictionary
+        shape_gcode_dict[shape.name] = gcode
+
+So at the end we should have a set of objects correctly positioned in the 3D space in gcode format.
+
+Do not go into detail about the implementation, just the convert the plan into a pseudocode.
+Give your answer in a ```pseudocode``` block.
