@@ -9,14 +9,8 @@ from transformers import TrainerCallback, TrainerState, TrainerControl
 from trl import SFTTrainer
 from tqdm import tqdm
 
-from data.data_utils import collate_vqa, val_collate_fn
-from src.utils import question_extractor, answer_extractor, extract_fr, chunkify
-from src.config import TRAINING_ARGS
-TRAINING_ARGS.remove_unused_columns=False
-from src.config import (
-    LORA
-)
-
+from utils.data_utils import collate_vqa, val_collate_fn
+from utils.utils import question_extractor, answer_extractor, extract_fr, chunkify
 
 class CustomCallbacks(TrainerCallback):
     def __init__(self, trainer, processor, expert):
@@ -25,14 +19,6 @@ class CustomCallbacks(TrainerCallback):
         self.expert = expert
 
     def on_train_begin(self, args: TrainingArguments, state: TrainerState, control: TrainerControl, **kwargs):
-        
-        # # Check which parameters of the model are trainable
-        # if hasattr(self.trainer, 'model'):
-        #     print("Trainable parameters in the model:")
-        #     for name, param in self.trainer.model.named_parameters():
-        #         if param.requires_grad:
-        #             print(f"Parameter: {name}, dtype: {param.dtype}")
-
         return super().on_train_begin(args, state, control, **kwargs)
 
     def on_step_end(self, args, state: TrainerState, control: TrainerControl, **kwargs):
@@ -66,23 +52,22 @@ class CustomCallbacks(TrainerCallback):
 
             self.trainer.model.train()
 
-def train_model(model, processor, expert, train_dataset, eval_dataset):
+def train_model(model, processor, expert, train_dataset, eval_dataset, training_args, args):
 
     print("Starting training...")
 
     # Configure the trainer with or without PEFT based on LORA flag
     trainer_args = {
         "model": model,
-        "args": TRAINING_ARGS,
+        "args": training_args,
         "train_dataset": train_dataset,
         "eval_dataset": eval_dataset,
         "data_collator": lambda examples: collate_vqa(examples, processor, expert),
         "tokenizer": processor.tokenizer,
     }
 
-    if LORA:
-        from src.config import PEFT_CONFIG
-        trainer_args["peft_config"] = PEFT_CONFIG
+    if args.lora:
+        trainer_args["peft_config"] = args.peft_config
 
     trainer = SFTTrainer(**trainer_args)
 

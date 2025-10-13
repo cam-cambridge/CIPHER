@@ -181,3 +181,4 @@ websocket-client==1.8.0
 widgetsnbextension==4.0.13
 xxhash==3.5.0
 yarl==1.18.0
+dotenv

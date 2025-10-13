@@ -3,21 +3,30 @@ from PIL import Image
 import json
 import random
 from qwen_vl_utils import process_vision_info
+from huggingface_hub import hf_hub_download
+from datasets import load_dataset as hf_load_dataset
 
 prompt_template="What do you see?"
 expert_template = """{{flowrate:{FLOW_RATE_VALUE}}}"""
 answer_template="""The flowrate is {FLOW_RATE_VALUE}."""
 
-with open("/home/cm2161/rds/hpc-work/llama-manufacturing/pr-intern/src/data/general_statements.json", 'r') as file:
-    general_statements = json.load(file)["general_statements"]
-with open("/home/cm2161/rds/hpc-work/llama-manufacturing/pr-intern/src/data/qual_over_extrusion.json", 'r') as file:
-    qual_over_extrusion = json.load(file)["over_extrusion_statements"]
-with open("/home/cm2161/rds/hpc-work/llama-manufacturing/pr-intern/src/data/qual_under_extrusion.json", 'r') as file:
-    qual_under_extrusion = json.load(file)["under_extrusion_statements"]
-with open("/home/cm2161/rds/hpc-work/llama-manufacturing/pr-intern/src/data/qual_good_extrusion.json", 'r') as file:
-    qual_good_extrusion = json.load(file)["good_extrusion_statements"]
-with open("/home/cm2161/rds/hpc-work/llama-manufacturing/pr-intern/src/data/quant_templates.json", 'r') as file:
-    quant_templates = json.load(file)["flow_rate_statements"]
+# Load JSON templates from HuggingFace
+def _load_json_from_hf(filename, cache_dir="./.cache"):
+    """Load JSON file from HuggingFace repository."""
+    file_path = hf_hub_download(
+        repo_id="cemag/tl-caxton",
+        filename=filename,
+        repo_type="dataset",
+        cache_dir=cache_dir
+    )
+    with open(file_path, 'r') as file:
+        return json.load(file)
+
+general_statements = _load_json_from_hf("general_statements.json")["general_statements"]
+qual_over_extrusion = _load_json_from_hf("qual_over_extrusion.json")["over_extrusion_statements"]
+qual_under_extrusion = _load_json_from_hf("qual_under_extrusion.json")["under_extrusion_statements"]
+qual_good_extrusion = _load_json_from_hf("qual_good_extrusion.json")["good_extrusion_statements"]
+quant_templates = _load_json_from_hf("quant_templates.json")["flow_rate_statements"]
 
 ## note: reinstall bitsandbytes if not working. enforced version 0.37.2.
 
@@ -56,7 +65,7 @@ def format_data(sample, image=True, fr= False, train=True):
     if image:
         formatted_data["messages"][0]["content"].append(
                             {
-                                "type": "image","image": Image.open(sample["full_img_path"]),
+                                "type": "image","image": sample["image"],
                             }
                         )
 
@@ -124,12 +133,28 @@ def val_collate_fn(examples, processor, expert=False):
     return batch
 
 
-def load_dataset(file_path, base_dir, n_rows=100):
-    data = pd.read_csv(file_path)
-    data= data.drop(
-        columns=["Unnamed: 0.2", "Unnamed: 0.1", "Unnamed: 0", "timestamp", "nozzle_tip_x", "nozzle_tip_y"]
-    ).head(n_rows)
-    data["full_img_path"] = base_dir + data["img_path"].astype(str)
-    data= [row for _, row in data.iterrows()]
+def load_dataset(split="train", n_rows=None, cache_dir="./.cache"):
+    """
+    Load dataset from HuggingFace.
+    
+    Args:
+        split (str): Which split to load ('train', 'validation', or 'test')
+        n_rows (int, optional): Number of rows to load. If None, loads all rows.
+        cache_dir (str): Directory to cache the dataset
+        
+    Returns:
+        list: List of dictionaries containing the dataset samples
+    """
+    # Load dataset from HuggingFace
+    dataset = hf_load_dataset("cemag/tl-caxton", split=split, cache_dir=cache_dir)
+    
+    # Limit number of rows if specified
+    if n_rows is not None:
+        dataset = dataset.select(range(min(n_rows, len(dataset))))
+    
+    # Convert to list of dictionaries
+    # Note: We don't drop nozzle_tip_x and nozzle_tip_y here, they're just unused
+    data = [sample for sample in dataset]
+    
     return data
 

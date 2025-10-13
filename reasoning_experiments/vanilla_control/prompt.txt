@@ -1,7 +1,0 @@
-Calculate g_code_value using the formula:
-gcode value = (100 / estimated flowrate) * firmware flowrate
-output = <M221 S{{g_code_value}}>
-Pay attention to the decimal places.
-
-**Your task**
-If estimated flowrate = {E} and firmware flowrate = {F}, then ...

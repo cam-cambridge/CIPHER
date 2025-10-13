@@ -3,18 +3,37 @@ from transformers import AutoModelForVision2Seq, AutoProcessor
 from qwen_vl_utils import process_vision_info
 from PIL import Image
 import re
+import os
+from huggingface_hub import login
+from dotenv import load_dotenv
 
-CACHE_DIR = "/home/cm2161/rds/hpc-work/"
+load_dotenv()
 
-def load_model_and_processor(experiment):
+login(
+    token=os.environ.get("HF_TOKEN")
+)
+
+CACHE_DIR = "./.cache"
+
+import sys
+# Add both the src directory and the project root to sys.path
+_current_file = os.path.abspath(__file__)
+_src_dir = os.path.dirname(os.path.dirname(_current_file))  # src directory
+_project_root = os.path.dirname(_src_dir)  # CIPHER directory
+sys.path.insert(0, _src_dir)
+sys.path.insert(0, _project_root)
+
+os.makedirs(CACHE_DIR, exist_ok=True)
+
+def load_model_and_processor(experiment, eval=False):
     
-    model_path = f"/home/cm2161/rds/hpc-work/{experiment['path']}/checkpoint-279"
+    model_path = experiment["path"]
     
     if experiment["lora"]:
         model = AutoModelForVision2Seq.from_pretrained(
             model_path,
             device_map="auto",
-            cache_dir=CACHE_DIR
+            cache_dir=CACHE_DIR,
         )
     else:
         model = AutoModelForVision2Seq.from_pretrained(
@@ -29,18 +48,19 @@ def load_model_and_processor(experiment):
     )
     
     if experiment.get('expert'):
-        from src.vexpert import VisionExpert
+        import vexpert
         print("Loading vision expert")
-        vision_expert = VisionExpert(load_dir=CACHE_DIR)
+        vision_expert = vexpert.VisionExpert(load_dir=CACHE_DIR)
     else:
         vision_expert = False
+
+    if eval:
+        model.eval()
 
     return model, processor, vision_expert
 
 
-def load_test_dataset(file_path="/home/cm2161/rds/hpc-work/tl-caxton/cleaned_test_global2.csv", 
-                      base_dir="/home/cm2161/rds/hpc-work/tl-caxton/cropped_data/", 
-                      test_samples=1000):
+def load_test_dataset(file_path, base_dir, test_samples):
     """
     Loads and preprocesses the dataset, and randomly samples a specified number of rows.
 
@@ -52,11 +72,53 @@ def load_test_dataset(file_path="/home/cm2161/rds/hpc-work/tl-caxton/cleaned_tes
     Returns:
         pd.DataFrame: A randomly sampled subset of the dataset.
     """
-    data = pd.read_csv(file_path).drop(columns=['Unnamed: 0.2', 'Unnamed: 0.1', 'Unnamed: 0', 'timestamp', 'nozzle_tip_x', 'nozzle_tip_y'])     # Load and clean the dataset
-    data['full_img_path'] = base_dir + data['img_path'].astype(str) # Add full image path
+    data = pd.read_csv(file_path).drop(columns=['nozzle_tip_x', 'nozzle_tip_y'])     # Load and clean the dataset
     sampled_data = data.sample(n=test_samples).reset_index(drop=True)    # Randomly sample test_samples rows
     data= [row for _, row in sampled_data.iterrows()]
     return data
+
+
+def load_test_dataset_from_hf(dataset_name, split='test', test_samples=None):
+    """
+    Loads dataset from Hugging Face Hub and randomly samples a specified number of rows.
+
+    Args:
+        dataset_name (str): Name of the dataset on Hugging Face Hub (e.g., 'cemag/tl-caxton').
+        split (str): Dataset split to load ('train', 'validation', or 'test'). Default is 'test'.
+        test_samples (int, optional): Number of random samples to return. If None, returns entire split.
+
+    Returns:
+        list: A list of dataset samples as dictionaries.
+    """
+    from datasets import load_dataset
+    
+    print(f"Loading dataset '{dataset_name}' (split: {split}) from Hugging Face Hub...")
+    
+    # Load the dataset from Hugging Face
+    dataset = load_dataset(dataset_name, split=split, cache_dir=CACHE_DIR)
+    
+    # Convert to pandas for easier manipulation
+    df = dataset.to_pandas()
+    
+    # Sample if requested
+    if test_samples is not None and test_samples < len(df):
+        df = df.sample(n=test_samples).reset_index(drop=True)
+        print(f"Sampled {test_samples} examples from {split} split")
+    else:
+        print(f"Using all {len(df)} examples from {split} split")
+    
+    # Convert image to PIL format and prepare data
+    processed_data = []
+    for idx, row in df.iterrows():
+        sample = {
+            'flow_rate': row['flow_rate'],
+            'nozzle_tip_x': row['nozzle_tip_x'],
+            'nozzle_tip_y': row['nozzle_tip_y'],
+            'image': row['image'],  # Already a PIL Image from HF datasets
+        }
+        processed_data.append(sample)
+    
+    return processed_data
 
 
 def batchify(dataset, batch_size):
@@ -105,7 +167,6 @@ def val_collate_fn_squad(examples, processor):
 prompt_template="What do you see?"
 expert_template = """{{flowrate:{FLOW_RATE_VALUE}}}"""
 
-
 def format_data_flickr(image):
     
     formatted_data = {"messages": [{"role": "user","content": []}]}
@@ -142,11 +203,19 @@ def format_data(sample, image=True, fr= False):
     formatted_data = {"messages": [{"role": "user","content": []}]}
 
     if image:
+        # Handle both HF dataset (with 'image' field) and local files (with 'full_img_path')
+        if 'image' in sample and sample['image'] is not None:
+            img = sample['image']  # Already a PIL Image from HF
+        elif 'full_img_path' in sample and sample['full_img_path'] is not None:
+            img = Image.open(sample["full_img_path"])  # Open from local path
+        else:
+            raise ValueError("Sample must have either 'image' or 'full_img_path' field")
+        
         formatted_data["messages"][0]["content"].append(
-                            {
-                                "type": "image","image": Image.open(sample["full_img_path"]),
-                            }
-                        )
+            {
+                "type": "image", "image": img,
+            }
+        )
 
     if fr:
         formatted_data["messages"][0]["content"].append(
@@ -162,7 +231,6 @@ def format_data(sample, image=True, fr= False):
         )
 
     return formatted_data
-
 
 def answer_extractor(examples, start_marker="<|start_header_id|>assistant<|end_header_id|>", end_marker="<|eot_id|>"):
     """
@@ -214,3 +282,22 @@ def extract_fr(examples):
             values.append(None)
             
     return values
+
+def format_data_RAG(example, RAG=False):
+    
+    formatted_data = {"messages": [{"role": "user", "content": []}]}
+
+    formatted_data["messages"][0]["content"].append(
+        {
+            "type": "text", "text": example["question"]
+        }
+    )
+
+    if RAG :
+        formatted_data["messages"][0]["content"].append(
+            {
+                "type": "text", "text": example["context"]
+            }
+        )
+
+    return formatted_data

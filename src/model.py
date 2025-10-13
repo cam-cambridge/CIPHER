@@ -1,45 +1,37 @@
 import torch
 from transformers import AutoModelForVision2Seq, AutoProcessor, AutoImageProcessor, AutoModelForImageClassification
-from src.config import CACHE_DIR, MODEL_NAME
 from rich.console import Console
-from src.vexpert import VisionExpert
+from vexpert import VisionExpert
 
-from src.config import (
-    EXPERT,
-    LORA,
-    L_TRAINABLE,
-    V_TRAINABLE,
-)
-
-def load_model_and_processor():
+def load_model_and_processor(args):
     
     console = Console()
 
-    if LORA:
+    if args.lora:
         model = AutoModelForVision2Seq.from_pretrained(
-            MODEL_NAME,
+            args.model_path,
             device_map="auto",
-            cache_dir=CACHE_DIR,
+            cache_dir=args.cache_dir,
         )
         console.print("[yellow2]    LoRA mode on.! 🛰️[/yellow2]")
     else:
         model = AutoModelForVision2Seq.from_pretrained(
-            MODEL_NAME,
+            args.model_path,
             device_map="auto",
-            cache_dir=CACHE_DIR,
+            cache_dir=args.cache_dir,
         )
         console.print("[yellow2]    LoRA mode off.! 🛰️[/yellow2]")
     
     model.config.use_cache = False
 
-    if L_TRAINABLE:
+    if args.language:
         console.print("[red]    The language module is on fire![/red] 🔥")
     else:
         for param in model.language_model.parameters():
             param.requires_grad = False
         console.print("[cyan]    The langauge module is frozen![/cyan] 🧊")
     
-    if V_TRAINABLE:
+    if args.vision:
         console.print("[red]    The vision module is on fire![/red] 🔥")
     else:
         for param in model.vision_model.parameters():
@@ -47,13 +39,13 @@ def load_model_and_processor():
         console.print("[cyan]    The vision module is frozen![/cyan] 🧊")
 
     processor = AutoProcessor.from_pretrained(
-        MODEL_NAME,
-        cache_dir=CACHE_DIR
+        args.model_path,
+        cache_dir=args.cache_dir
     )
 
-    if EXPERT:
+    if args.expert:
         print("Initialisng vision expert.")
-        vision_expert = VisionExpert(load_dir=CACHE_DIR)
+        vision_expert = VisionExpert(load_dir=args.cache_dir)
         console.print("[yellow2]    The vision expert has been loaded![/yellow2] 👁️")
     else:
         vision_expert = False

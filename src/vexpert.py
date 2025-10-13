@@ -9,13 +9,7 @@ from tqdm import tqdm
 from matplotlib import pyplot as plt
 import wandb
 from tqdm import tqdm
-
-from data.data_utils import load_dataset
-from src.config import (
-    TRAIN_PATH,
-    VAL_PATH,
-    BASE_DIR,
-)
+from huggingface_hub import hf_hub_download
 
 class VisionExpert:
     def __init__(self, load_dir=None):
@@ -59,8 +53,7 @@ class VisionExpert:
         for input_row in inputs:
             try:
                 # Load the image
-                img_path = input_row["full_img_path"]
-                img = Image.open(img_path)  # Load as a color image
+                img = input_row["image"]  # Load as a color image
                 # img.save(f"testing/{self.steps}.png")
 
                 if img is None:
@@ -93,8 +86,6 @@ class VisionExpert:
         batch["y"] = torch.tensor(batch["y"]).to(self.device)
         batch["y"] = torch.log(batch["y"]/100).to(self.device)
         
-        # print(batch["img"].shape)
-
         return batch    
 
     def active_learning(self, input):
@@ -122,7 +113,6 @@ class VisionExpert:
             predictions_mapped= torch.exp(y_hat)*100
             ground_truths_mapped= torch.exp(batch['y'])*100
             avg_val_metric= torch.mean(torch.abs(ground_truths_mapped - predictions_mapped).detach()).item()
-            print("step validation: ",avg_val_metric)
 
         return y_hat.detach(), batch['y'], list(map(int, (torch.exp(y_hat.detach()) * 100).detach().cpu().tolist()))
 
@@ -178,7 +168,6 @@ class VisionExpert:
         ground_truths_mapped= torch.exp(ground_truths)*100
         avg_val_metric= torch.mean(torch.abs(ground_truths_mapped - predictions_mapped).detach()).item()
         # wandb.log({"expert_MAE_loss (val)": avg_val_metric}, step=self.steps)
-        print("internal validation: ",avg_val_metric)
 
         # # Plot predictions vs ground truth
         # plt.figure(figsize=(8, 8))
@@ -199,12 +188,8 @@ class VisionExpert:
         # print(f"Plot saved at {plot_path}")
         # plt.close()
 
-    def warmup(self, warmup_steps=1000):
+    def warmup(self, warmup_dataset, validation_dataset, warmup_steps=1000):
 
-        # Load datasets
-        warmup_dataset, validation_dataset = self.load_datasets(
-            TRAIN_PATH, VAL_PATH, BASE_DIR, warmup_steps, 1000
-        )
 
         # Example usage
         batch_size = 4  # Define your batch size
@@ -271,16 +256,32 @@ class VisionExpert:
     def load(self, load_dir):
         """
         Load the model state dictionary and optimizer state.
+        Downloads from HuggingFace if not found locally.
         
         Args:
             load_dir (str): Directory where the model checkpoint is saved.
         """
-        checkpoint = torch.load(os.path.join(load_dir, "vexpert_checkpoint.pth"), weights_only=True)
+        
+        checkpoint_path = f"{load_dir}/vexpert_checkpoint.pth"
+        
+        # If checkpoint doesn't exist locally, download from HuggingFace
+        if not os.path.exists(checkpoint_path):
+            print(f"Expert checkpoint not found at {checkpoint_path}")
+            print("Downloading from HuggingFace: cemag/cipher_printing/vexpert_checkpoint.pth")
+            
+            checkpoint_path = hf_hub_download(
+                repo_id='cemag/cipher_printing',
+                filename='vexpert_checkpoint.pth',
+                cache_dir=load_dir,
+            )
+            print(f"Downloaded checkpoint to: {checkpoint_path}")
+        
+        checkpoint = torch.load(checkpoint_path, weights_only=True)
         self.vexpert.load_state_dict(checkpoint['model_state_dict'])
         self.opt.load_state_dict(checkpoint['optimizer_state_dict'])
         self.scheduler.load_state_dict(checkpoint['scheduler_state_dict'])
         self.steps = checkpoint['steps']
-        print(f"Model loaded from {load_dir}")
+        print(f"Model loaded from {checkpoint_path}")
 
 # wandb.init(project="Pr-Intern", name="vexpert_isolated")
 # model = VisionExpert(load_dir="/home/cm2161/rds/hpc-work/")

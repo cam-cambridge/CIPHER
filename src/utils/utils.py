@@ -7,6 +7,8 @@ import uuid
 from matplotlib import pyplot as plt 
 from tabulate import tabulate
 
+
+
 def load_and_augment_images_torchvision(image_paths):
     """
     Load images from file paths, apply all augmentations using torchvision,
