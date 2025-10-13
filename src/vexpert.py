@@ -146,17 +146,6 @@ class VisionExpert:
         num_batches = (len(dataset) + batch_size - 1) // batch_size  # Calculate total number of batches
         return [dataset[i * batch_size: (i + 1) * batch_size] for i in range(num_batches)]
 
-    def load_datasets(self, train_path, val_path, base_dir, n_train_rows, n_val_rows):
-        """
-        Load training and validation datasets.
-        """
-        try:
-            train_dataset = load_dataset(train_path, base_dir, n_rows=n_train_rows)
-            val_dataset = load_dataset(val_path, base_dir, n_rows=n_val_rows)
-            return train_dataset, val_dataset
-        except Exception as e:
-            raise
-
     def validate_internally(self, samples):
 
         # Example usage

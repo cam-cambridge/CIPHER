@@ -58,11 +58,11 @@ export HF_TOKEN=hf_********************************
 ```bash
 bash scripts/run_train.sh
 ```
-The pre-trained [microsoft/ResNet-50](https://huggingface.co/microsoft/resnet-50) model and the pre-trained [meta/Llama-3.2]() will be fetched from Hugging Face. The train dataset (subset) will be fetched from [cemag/tl-caxton]().
-
-Explicit Notes on Model Licensing & Commercial Use: While all code in this repository is released under an MIT License, our pretrained models may inherit restrictions from the underlying base models we use. Specifically, CIPHER is derived from Llama-3.2, and as such are subject to the Llama Community License.
+The pre-trained [microsoft/ResNet-50](https://huggingface.co/microsoft/resnet-50) model and the pre-trained [meta-llama/Llama-3.2-1B](https://huggingface.co/meta-llama/Llama-3.2-1B) will be fetched from Hugging Face. The train dataset (subset) will be fetched from [cemag/tl-caxton](https://huggingface.co/datasets/cemag/tl-caxton).
 
 We train on 4 × NVIDIA A100 80GB. LoRA models can be trained with significantly fewer resources.
+
+Explicit Notes on Model Licensing & Commercial Use: While all code in this repository is released under an MIT License, our pretrained models may inherit restrictions from the underlying base models we use. Specifically, CIPHER is derived from Llama-3.2, and as such are subject to the Llama Community License.
 
 ## Inference
 

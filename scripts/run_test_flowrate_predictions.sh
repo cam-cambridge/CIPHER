@@ -58,7 +58,7 @@ echo "  Data path: $DATA_PATH"
 echo "  Results path: $RESULTS_PATH"
 echo ""
 
-python ./src/test_utils/predict_flowrates.py \
+python ./src/tests/predict_flowrates.py \
     --test_samples $TEST_SAMPLES \
     --batch_size $BATCH_SIZE \
     --model_path "$MODEL_PATH" \

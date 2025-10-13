@@ -30,7 +30,7 @@ quant_templates = _load_json_from_hf("quant_templates.json")["flow_rate_statemen
 
 ## note: reinstall bitsandbytes if not working. enforced version 0.37.2.
 
-def synthesize_answer(sample, general=True, quant=True, qual=True):
+def synthesize_answer(sample, general=True, quant=True, qual=True, single_token=False):
     final_statement = ""
 
     # General statement
@@ -58,7 +58,7 @@ def synthesize_answer(sample, general=True, quant=True, qual=True):
     return final_statement.strip()
 
 
-def format_data(sample, image=True, fr= False, train=True):
+def format_data(sample, image=True, fr= False, train=True, single_token=False):
 
     formatted_data = {"messages": [{"role": "user","content": []}]}
 
@@ -69,7 +69,7 @@ def format_data(sample, image=True, fr= False, train=True):
                             }
                         )
 
-    if fr:
+    if fr and not single_token:
         formatted_data["messages"][0]["content"].append(
                 {
                     "type": "text", "text": expert_template.format(FLOW_RATE_VALUE=fr)+prompt_template
