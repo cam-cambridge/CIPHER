@@ -132,7 +132,22 @@ def val_collate_fn(examples, processor, expert=False):
     else:
         templates= [format_data(example, image=True) for example in examples]
 
-    image_inputs = [process_vision_info(template["messages"])[0] for template in templates]
+    # Extract images directly from the templates before processing
+    image_inputs = []
+    for template in templates:
+        for content in template["messages"][0]["content"]:
+            if content["type"] == "image":
+                img = content["image"]
+                # Convert dict format back to PIL Image if needed
+                if isinstance(img, dict) and 'bytes' in img:
+                    from io import BytesIO
+                    img = Image.open(BytesIO(img['bytes']))
+                elif not isinstance(img, Image.Image):
+                    # If it's still not a PIL Image, try to convert it
+                    img = Image.open(img) if isinstance(img, str) else img
+                image_inputs.append(img)
+                break
+    
     texts = [processor.apply_chat_template(template["messages"], tokenize=False) for template in templates] # puts in template, and <image> token is isolated from img
 
     batch = processor(text=texts, images=image_inputs, return_tensors="pt", padding=True)

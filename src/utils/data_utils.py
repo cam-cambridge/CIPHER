@@ -146,14 +146,17 @@ def load_dataset(split="train", n_rows=None, cache_dir="./.cache"):
         list: List of dictionaries containing the dataset samples
     """
     # Load dataset from HuggingFace
-    dataset = hf_load_dataset("cemag/tl-caxton", split=split, cache_dir=cache_dir)
-    
+    dataset = hf_load_dataset(
+        dataset_name="cemag/tl-caxton", 
+        split=split, 
+        cache_dir=cache_dir
+    )
+
     # Limit number of rows if specified
     if n_rows is not None:
         dataset = dataset.select(range(min(n_rows, len(dataset))))
     
     # Convert to list of dictionaries
-    # Note: We don't drop nozzle_tip_x and nozzle_tip_y here, they're just unused
     data = [sample for sample in dataset]
     
     return data
