@@ -118,9 +118,9 @@ Available scripts:
 Each script has a help menu accessible via `-h` or `--help` flag.
 
 Any of these experiments can run using
-'''bash
+```bash
 bash scripts/{script.sh}
-'''
+```
 <hr style="border: 2px solid gray;"></hr>
 
 #### Citation
