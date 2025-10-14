@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Default values (matching the Python script defaults)
-TEST_SAMPLES=1
+TEST_SAMPLES=100
 MODEL_PATH="cemag/cipher_printing"
 QUESTION_ANSWER_PATH="squad"
 IMAGE_CAPTION_PATH="nlphuji/flickr30k"
