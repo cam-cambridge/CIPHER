@@ -1,7 +1,19 @@
-Calculate g_code_value using the formula:
-gcode value = (100 / estimated flowrate) * firmware flowrate
-output = <M221 S{{g_code_value}}>
-Pay attention to the decimal places.
+## Task
+Compute a G-code flow override.
 
-**Your task**
-If estimated flowrate = {E} and firmware flowrate = {F}, then ...
+## Input
+- Estimated flowrate (E): {E}
+- Firmware flowrate (F): {F}
+
+## Steps
+1. Calculate `g_code_value = (100 / E) * F`.
+
+## Output format (exactly)
+Return a single code block with one line:
+'''M221 S{{g_code_value}}'''
+
+## Rules
+- No explanations or extra text.
+- No units.
+- No trailing spaces or blank lines.
+- End the reply immediately after the code block.

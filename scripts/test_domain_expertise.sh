@@ -5,7 +5,7 @@ MODEL_PATH="cemag/cipher_printing"
 QUESTIONS_PATH="prompts/3d_printing_questions.json"
 FACTS_PATH="src/RAG/processed_facts_openai.json"
 RAG=True
-CONTEXT=5
+CONTEXT=1
 RESULTS_PATH="./results"
 OPENAI_API_KEY="..."
 
