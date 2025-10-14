@@ -70,11 +70,11 @@ We have prepared test scripts for the experiments as seen in the paper.
 Available scripts:
 | Script | Description | Inputs |
 |--------|-------------|--------|
-| `scripts/ask.sh` | Ask a single question to the model | `--model_path`, `--question`, `--results_path` |
-| `scripts/test_flowrate_predictions.sh` | Test flowrate predictions on test dataset | `--test_samples`, `--batch_size`, `--model_path`, `--data_path`, `--results_path` |
-| `scripts/test_vanilla_control.sh` | Test vanilla control performance | `--model_path`, `--num_questions`, `--prompt_path`, `--results_path` |
-| `scripts/test_domain_expertise.sh` | Test domain expertise with/without RAG | `--model_path`, `--questions_path`, `--rag`, `--results_path`, `--context` |
-| `scripts/test_overfit.sh` | Test models catastrophic forgetting on SQUAD (language) and Flickr30 (image)datasets | `--test_samples`, `--model_path`, `--results_path` |
+| `ask.sh` | Ask a single question to the model | `--model_path`, `--question`, `--results_path` |
+| `test_flowrate_predictions.sh` | Test flowrate predictions on test dataset | `--test_samples`, `--batch_size`, `--model_path`, `--data_path`, `--results_path` |
+| `test_vanilla_control.sh` | Test vanilla control performance | `--model_path`, `--num_questions`, `--prompt_path`, `--results_path` |
+| `test_domain_expertise.sh` | Test domain expertise with/without RAG | `--model_path`, `--questions_path`, `--rag`, `--results_path`, `--context` |
+| `test_overfit.sh` | Test models catastrophic forgetting on SQUAD (language) and Flickr30 (image)datasets | `--test_samples`, `--model_path`, `--results_path` |
 
 Each script has a help menu accessible via `-h` or `--help` flag.
 
