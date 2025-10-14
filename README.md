@@ -69,43 +69,47 @@ Explicit Notes on Model Licensing & Commercial Use: While all code in this repos
 We have prepared test scripts for the experiments as seen in the paper.
 Available scripts:
 <table>
-  <colgroup>
-    <col style="width:18%">
-    <col style="width:22%">
-    <col style="width:60%">
-  </colgroup>
   <thead>
     <tr>
       <th>Script</th>
-      <th>Description</th>
-      <th>Arguments at start of script</th>
+      <th>Details</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><code>ask.sh</code></td>
-      <td>Ask a single question to the model</td>
-      <td><code>--model_path</code><br/><code>--question</code><br/><code>--results_path</code></td>
+      <td>
+        Ask a single question to the model<br/>
+        <strong>Args:</strong> <code>--model_path</code>, <code>--question</code>, <code>--results_path</code>
+      </td>
     </tr>
     <tr>
       <td><code>test_flowrate_predictions.sh</code></td>
-      <td>Test flowrate predictions on test dataset</td>
-      <td><code>--test_samples</code><br/><code>--batch_size</code><br/><code>--model_path</code><br/><code>--data_path</code><br/><code>--results_path</code></td>
+      <td>
+        Test flowrate predictions on test dataset<br/>
+        <strong>Args:</strong> <code>--test_samples</code>, <code>--batch_size</code>, <code>--model_path</code>, <code>--data_path</code>, <code>--results_path</code>
+      </td>
     </tr>
     <tr>
       <td><code>test_vanilla_control.sh</code></td>
-      <td>Test vanilla control performance</td>
-      <td><code>--model_path</code><br/><code>--num_questions</code><br/><code>--prompt_path</code><br/><code>--results_path</code></td>
+      <td>
+        Test vanilla control performance<br/>
+        <strong>Args:</strong> <code>--model_path</code>, <code>--num_questions</code>, <code>--prompt_path</code>, <code>--results_path</code>
+      </td>
     </tr>
     <tr>
       <td><code>test_domain_expertise.sh</code></td>
-      <td>Test domain expertise with/without RAG</td>
-      <td><code>--model_path</code><br/><code>--questions_path</code><br/><code>--rag</code><br/><code>--results_path</code><br/><code>--context</code></td>
+      <td>
+        Test domain expertise with/without RAG<br/>
+        <strong>Args:</strong> <code>--model_path</code>, <code>--questions_path</code>, <code>--rag</code>, <code>--results_path</code>, <code>--context</code>
+      </td>
     </tr>
     <tr>
       <td><code>test_overfit.sh</code></td>
-      <td>Test models catastrophic forgetting on SQUAD (language) and Flickr30 (image)datasets</td>
-      <td><code>--test_samples</code><br/><code>--model_path</code><br/><code>--results_path</code></td>
+      <td>
+        Test models catastrophic forgetting on SQUAD (language) and Flickr30 (image) datasets<br/>
+        <strong>Args:</strong> <code>--test_samples</code>, <code>--model_path</code>, <code>--results_path</code>
+      </td>
     </tr>
   </tbody>
 </table>
