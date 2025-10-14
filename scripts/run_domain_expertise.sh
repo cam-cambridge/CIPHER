@@ -1,29 +1,32 @@
 #!/bin/bash
 
 # Default values (matching the Python script defaults)
-TEST_SAMPLES=1
 MODEL_PATH="cemag/cipher_printing"
-QUESTION_ANSWER_PATH="squad"
-IMAGE_CAPTION_PATH="nlphuji/flickr30k"
+QUESTIONS_PATH="prompts/3d_printing_questions.json"
+FACTS_PATH="src/RAG/processed_facts_openai.json"
+RAG="False"
 RESULTS_PATH="./results"
+OPENAI_API_KEY="...."
+
+# Check if API key is empty, not set, or equals "..."
+if [ -z "$OPENAI_API_KEY" ] || [ "$OPENAI_API_KEY" = "..." ]; then
+    echo "Error: OPENAI_API_KEY environment variable is not set or contains placeholder value"
+    exit 1
+fi
 
 # Parse named arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
-        --test_samples)
-            TEST_SAMPLES="$2"
-            shift 2
-            ;;
         --model_path)
             MODEL_PATH="$2"
             shift 2
             ;;
-        --question_answer_path)
-            QUESTION_ANSWER_PATH="$2"
+        --questions_path)
+            QUESTIONS_PATH="$2"
             shift 2
             ;;
-        --image_caption_path)
-            IMAGE_CAPTION_PATH="$2"
+        --rag)
+            RAG="$2"
             shift 2
             ;;
         --results_path)
@@ -34,10 +37,9 @@ while [[ $# -gt 0 ]]; do
             echo "Usage: $0 [options]"
             echo ""
             echo "Options:"
-            echo "  --test_samples N        Number of test samples (default: 100)"
             echo "  --model_path PATH       Model path (default: cemag/cipher_printing)"
-            echo "  --question_answer_path PATH         Question-answer dataset path (default: rajpurkar/squad)"
-            echo "  --image_caption_path PATH         Image caption dataset path (default: nlphuji/flickr30k)"
+            echo "  --questions_path PATH     Questions path (default: questions.txt)"
+            echo "  --rag BOOL             RAG (default: True)"
             echo "  --results_path PATH     Results output path (default: ./results)"
             echo "  -h, --help              Show this help message"
             exit 0
@@ -50,18 +52,18 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-echo "Running overfit tests with:"
-echo "  Test samples: $TEST_SAMPLES"
+export OPENAI_API_KEY="$OPENAI_API_KEY"
+
+echo "Running ask with:"
 echo "  Model path: $MODEL_PATH"
-echo "  Question answer path: $QUESTION_ANSWER_PATH"
-echo "  Image caption path: $IMAGE_CAPTION_PATH"
+echo "  Questions path: $QUESTIONS_PATH"
+echo "  RAG: $RAG"
 echo "  Results path: $RESULTS_PATH"
 echo ""
 
-python ./src/tests/examine_overfit.py \
-    --test_samples $TEST_SAMPLES \
+python ./src/tests/domain_expertise.py \
     --model_path "$MODEL_PATH" \
-    --question_answer_path "$QUESTION_ANSWER_PATH" \
-    --image_caption_path "$IMAGE_CAPTION_PATH" \
+    --questions_path "$QUESTIONS_PATH" \
+    --rag "$RAG" \
     --results_path "$RESULTS_PATH"
 

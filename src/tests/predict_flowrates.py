@@ -28,7 +28,9 @@ parser.add_argument('--lora', action='store_true', help='Use LoRA adapter')
 parser.add_argument('--results_path', type=str, default='./results')
 
 args = parser.parse_args()
-os.makedirs(args.results_path, exist_ok=True)
+
+results_path = f'{args.results_path}/{datetime.now().strftime("%Y%m%d_%H%M%S")}'
+os.makedirs(results_path, exist_ok=True)
 
 ## init experiment
 experiment={
@@ -93,7 +95,6 @@ for batch in tqdm(dataloader_our_dataset, desc="Processing..."):
             'answers': experiment_answers,
         })
 
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        results_df.to_csv(args.results_path+f"/{timestamp}.csv", 
+        results_df.to_csv(results_path+"flowrate_predictions.csv", 
                         index=True, 
-                        index_label='image_id')
+                        index_label='index')

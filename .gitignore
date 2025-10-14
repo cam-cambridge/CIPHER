@@ -201,3 +201,4 @@ wandb/
 models/
 results/
 .archive/
+prompts/processed_facts_openai.json

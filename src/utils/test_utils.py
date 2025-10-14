@@ -1,12 +1,12 @@
+import os
+
 import pandas as pd
 from transformers import AutoModelForVision2Seq, AutoProcessor
 from qwen_vl_utils import process_vision_info
 from PIL import Image
 import re
-import os
 from huggingface_hub import login
 from dotenv import load_dotenv
-
 load_dotenv()
 
 login(
@@ -124,6 +124,8 @@ def load_test_dataset_from_hf(dataset_name, split='test', test_samples=None):
 def batchify(dataset, batch_size):
     return [dataset[i:i + batch_size] for i in range(0, len(dataset), batch_size)]
 
+
+
 def val_collate_fn(examples, processor, expert=False):
 
     if expert:
@@ -179,6 +181,16 @@ def val_collate_fn_squad(examples, processor):
 
     return batch
 
+def val_collate_fn_ask(examples, processor):
+    
+    templates= [format_data_ask(example) for example in examples]
+
+    texts = [processor.apply_chat_template(template["messages"], tokenize=False) for template in templates] # puts in template, and <image> token is isolated from img
+
+    batch = processor(text=texts, return_tensors="pt", padding=True)
+
+    return batch
+
 prompt_template="What do you see?"
 expert_template = """{{flowrate:{FLOW_RATE_VALUE}}}"""
 
@@ -208,6 +220,18 @@ def format_data_squad(example):
     formatted_data["messages"][0]["content"].append(
         {
             "type": "text", "text": example['context']+" Question: "+example['question']
+        }
+    )
+
+    return formatted_data
+
+def format_data_ask(example):
+    
+    formatted_data = {"messages": [{"role": "user","content": []}]}
+
+    formatted_data["messages"][0]["content"].append(
+        {
+            "type": "text", "text": example
         }
     )
 
@@ -316,3 +340,31 @@ def format_data_RAG(example, RAG=False):
         )
 
     return formatted_data
+
+
+def batchify_overfit(dataset, batch_size=8):
+    batch = []
+    for sample in dataset:
+        batch.append(sample)
+        if len(batch) == batch_size:
+            yield batch
+            batch = []
+    if batch:  # Yield remaining samples if any
+        yield batch
+
+def val_collate_fn_RAG(examples, processor, system_message=None, RAG=False):
+    
+    from rag import ContextManager
+    context_manager = ContextManager()
+    
+    if RAG:
+        # Use the new ContextManager method to add context to examples
+        examples = context_manager.add_context_to_examples(examples, num_facts=5)
+
+    templates = [context_manager.format_data_with_system(example, system_message, RAG=RAG) for example in examples]
+    
+    texts = [processor.apply_chat_template(template["messages"], tokenize=False) for template in templates]
+
+    batch = processor(text=texts, return_tensors="pt", padding=True)
+
+    return batch
