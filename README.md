@@ -57,7 +57,7 @@ where ******************************** is your HF key (see https://huggingface.c
 ## Train
 
 ```bash
-bash scripts/run_train.sh
+bash scripts/train.sh
 ```
 The pre-trained [microsoft/ResNet-50](https://huggingface.co/microsoft/resnet-50) model and the pre-trained [meta-llama/Llama-3.2-1B](https://huggingface.co/meta-llama/Llama-3.2-1B) will be fetched from Hugging Face. The train dataset (subset) will be fetched from [cemag/tl-caxton](https://huggingface.co/datasets/cemag/tl-caxton).
 
@@ -65,7 +65,19 @@ We train on 4 × NVIDIA A100 80GB. LoRA models can be trained with significantly
 
 Explicit Notes on Model Licensing & Commercial Use: While all code in this repository is released under an MIT License, our pretrained models may inherit restrictions from the underlying base models we use. Specifically, CIPHER is derived from Llama-3.2, and as such are subject to the Llama Community License.
 
-## Inference
+## Inference / Tests
+We have prepared test scripts for the experiments as seen in the paper.
+Available scripts:
+| Script | Description | Inputs |
+|--------|-------------|--------|
+| `scripts/test_flowrate_predictions.sh` | Test flowrate predictions on test dataset | `--test_samples`, `--batch_size`, `--model_path`, `--data_path`, `--results_path` |
+| `scripts/test_vanilla_control.sh` | Test vanilla control performance | `--model_path`, `--num_questions`, `--prompt_path`, `--results_path` |
+| `scripts/test_domain_expertise.sh` | Test domain expertise with/without RAG | `--model_path`, `--questions_path`, `--rag`, `--results_path`, `--context` |
+| `scripts/ask.sh` | Ask a single question to the model | `--model_path`, `--question`, `--results_path` |
+
+Each script has a help menu accessible via `-h` or `--help` flag.
+
+
 
 <hr style="border: 2px solid gray;"></hr>
 
