@@ -69,7 +69,7 @@ Explicit Notes on Model Licensing & Commercial Use: While all code in this repos
 We have prepared test scripts for the experiments as seen in the paper.
 Available scripts:
 | Script | Description | Inputs |
-|--------|-------------|--------|
+|--------|-----------|------------------|
 | `scripts/ask.sh` | Ask a single question to the model | `--model_path`<br>`--question`<br>`--results_path` |
 | `scripts/test_flowrate_predictions.sh` | Test flowrate predictions on test dataset | `--test_samples`<br>`--batch_size`<br>`--model_path`<br>`--data_path`<br>`--results_path` |
 | `scripts/test_vanilla_control.sh` | Test vanilla control performance | `--model_path`<br>`--num_questions`<br>`--prompt_path`<br>`--results_path` |
