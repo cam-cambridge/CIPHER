@@ -68,13 +68,48 @@ Explicit Notes on Model Licensing & Commercial Use: While all code in this repos
 ## Inference / Tests
 We have prepared test scripts for the experiments as seen in the paper.
 Available scripts:
-| Script | Description | Arguments at start of script |
-|--------|-------------|--------|
-| `ask.sh` | Ask a single question to the model | `--model_path` <br/> `--question` <br/> `--results_path` |
-| `test_flowrate_predictions.sh` | Test flowrate predictions on test dataset | `--test_samples` <br/> `--batch_size` <br/> `--model_path` <br/> `--data_path` <br/> `--results_path` |
-| `test_vanilla_control.sh` | Test vanilla control performance | `--model_path` <br/> `--num_questions` <br/> `--prompt_path` <br/> `--results_path` |
-| `test_domain_expertise.sh` | Test domain expertise with/without RAG | `--model_path` <br/> `--questions_path` <br/> `--rag` <br/> `--results_path` <br/> `--context` |
-| `test_overfit.sh` | Test models catastrophic forgetting on SQUAD (language) and Flickr30 (image)datasets | `--test_samples` <br/> `--model_path` <br/> `--results_path` |
+<table>
+  <colgroup>
+    <col style="width:18%">
+    <col style="width:22%">
+    <col style="width:60%">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Script</th>
+      <th>Description</th>
+      <th>Arguments at start of script</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ask.sh</code></td>
+      <td>Ask a single question to the model</td>
+      <td><code>--model_path</code><br/><code>--question</code><br/><code>--results_path</code></td>
+    </tr>
+    <tr>
+      <td><code>test_flowrate_predictions.sh</code></td>
+      <td>Test flowrate predictions on test dataset</td>
+      <td><code>--test_samples</code><br/><code>--batch_size</code><br/><code>--model_path</code><br/><code>--data_path</code><br/><code>--results_path</code></td>
+    </tr>
+    <tr>
+      <td><code>test_vanilla_control.sh</code></td>
+      <td>Test vanilla control performance</td>
+      <td><code>--model_path</code><br/><code>--num_questions</code><br/><code>--prompt_path</code><br/><code>--results_path</code></td>
+    </tr>
+    <tr>
+      <td><code>test_domain_expertise.sh</code></td>
+      <td>Test domain expertise with/without RAG</td>
+      <td><code>--model_path</code><br/><code>--questions_path</code><br/><code>--rag</code><br/><code>--results_path</code><br/><code>--context</code></td>
+    </tr>
+    <tr>
+      <td><code>test_overfit.sh</code></td>
+      <td>Test models catastrophic forgetting on SQUAD (language) and Flickr30 (image)datasets</td>
+      <td><code>--test_samples</code><br/><code>--model_path</code><br/><code>--results_path</code></td>
+    </tr>
+  </tbody>
+</table>
+
 
 Each script has a help menu accessible via `-h` or `--help` flag.
 
