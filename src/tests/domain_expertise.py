@@ -19,9 +19,9 @@ parser.add_argument('--vision', type=bool, default=False)
 parser.add_argument('--expert', type=bool, default=True)
 parser.add_argument('--lora', type=bool, default=False)
 parser.add_argument('--questions_path', type=str, default='prompts/3d_printing_questions.json')
-parser.add_argument('--rag', type=bool, default=True)
+parser.add_argument('--rag', action='store_true', default=False)
+parser.add_argument('--context', type=int, default=5)
 parser.add_argument('--results_path', type=str, default='./results')
-
 args = parser.parse_args()
 
 results_path = f'{args.results_path}/{datetime.now().strftime("%Y%m%d_%H%M%S")}'
@@ -55,13 +55,13 @@ results = []
 for batch in tqdm(domain_questions_dataset, desc="Processing domain questions batches"):
     with torch.no_grad():
         
-        # Prepare batch
         batch_collated = val_collate_fn_RAG(
             batch, 
             processor,
             RAG = args.rag,
+            context = args.context,
         ).to(model.device)
-
+        
         # Generate outputs
         outputs = model.generate(
             **batch_collated,
@@ -74,10 +74,19 @@ for batch in tqdm(domain_questions_dataset, desc="Processing domain questions ba
 
         for example, answer in zip(batch, answers):
             question = example['question']
-            results.append({
-                "questions": question,
-                "answer": answer
-            })
+            
+            if args.rag:
+                context = example['context']
+                results.append({
+                        "questions": question,
+                        "context": context,
+                        "answer": answer
+                    })
+            else:
+                results.append({
+                    "questions": question,
+                    "answer": answer
+                })
 
     # Write the results to a JSON file
     with open(f'{results_path}/domain_expertise_experiment_results.json', "w") as file:

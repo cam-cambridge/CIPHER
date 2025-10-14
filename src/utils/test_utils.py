@@ -125,7 +125,6 @@ def batchify(dataset, batch_size):
     return [dataset[i:i + batch_size] for i in range(0, len(dataset), batch_size)]
 
 
-
 def val_collate_fn(examples, processor, expert=False):
 
     if expert:
@@ -154,10 +153,6 @@ def val_collate_fn(examples, processor, expert=False):
 
     batch = processor(text=texts, images=image_inputs, return_tensors="pt", padding=True)
 
-    # print("Batch structure:")
-    # for key, value in batch.items():
-    #     print(f"{key}: {value.shape if isinstance(value, torch.Tensor) else type(value)}")
-    
     return batch
 
 def val_collate_fn_flickr(examples, processor):
@@ -352,19 +347,20 @@ def batchify_overfit(dataset, batch_size=8):
     if batch:  # Yield remaining samples if any
         yield batch
 
-def val_collate_fn_RAG(examples, processor, system_message=None, RAG=False):
-    
-    from rag import ContextManager
-    context_manager = ContextManager()
+def val_collate_fn_RAG(examples, processor, system_message=None, RAG=False, context=5):
     
     if RAG:
-        # Use the new ContextManager method to add context to examples
-        examples = context_manager.add_context_to_examples(examples, num_facts=5)
-
-    templates = [context_manager.format_data_with_system(example, system_message, RAG=RAG) for example in examples]
+        print("Adding RAG context to examples")
+        from rag import ContextManager
+        context_manager = ContextManager()
+        examples = context_manager.add_context_to_examples(examples, num_facts=context)
+        templates = [context_manager.format_data_with_system(example, system_message, RAG=RAG) for example in examples]
+    else:
+        templates= [format_data_ask(example) for example in examples]
     
-    texts = [processor.apply_chat_template(template["messages"], tokenize=False) for template in templates]
+    print(templates[0])
 
+    texts = [processor.apply_chat_template(template["messages"], tokenize=False) for template in templates]
     batch = processor(text=texts, return_tensors="pt", padding=True)
 
     return batch

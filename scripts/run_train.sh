@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Default values (matching the Python script defaults)
-LANGUAGE="False"
-VISION="False"
-EXPERT="True"
-LORA="False"
+LANGUAGE=False
+VISION=False
+EXPERT=True
+LORA=False
 EXP="CIPHER_EXPERIMENT_1"
 DATA_PATH="cemag/tl-caxton"
 OUTPUT_DIR="./models"

@@ -52,6 +52,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 export HF_TOKEN=hf_********************************
 ```
+where ******************************** is your HF key (see https://huggingface.co/docs/hub/en/security-tokens)
 
 ## Train
 
