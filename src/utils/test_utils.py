@@ -125,6 +125,23 @@ def batchify(dataset, batch_size):
     return [dataset[i:i + batch_size] for i in range(0, len(dataset), batch_size)]
 
 
+def val_collate_fn_emerging_control(examples, processor, system_message=None, RAG=False):
+    
+    if RAG:
+        print("Adding RAG context to examples")
+        from rag import ContextManager
+        context_manager = ContextManager()
+        examples = context_manager.add_context_to_examples(examples, num_facts=context)
+        templates = [context_manager.format_data_with_system(example, system_message, RAG=RAG) for example in examples]
+    else:
+        templates= [format_data_ask(example) for example in examples]
+        
+    texts = [processor.apply_chat_template(template["messages"], tokenize=False) for template in templates]
+
+    batch = processor(text=texts, return_tensors="pt", padding=True)
+
+    return batch
+
 def val_collate_fn(examples, processor, expert=False):
 
     if expert:
@@ -364,3 +381,17 @@ def val_collate_fn_RAG(examples, processor, system_message=None, RAG=False, cont
     batch = processor(text=texts, return_tensors="pt", padding=True)
 
     return batch
+
+def generate_RAG_embedding(text):
+    """
+    Generate embedding using OpenAI's API.
+    """
+    try:
+        response = openai.Embedding.create(
+            input=text,
+            model="text-embedding-ada-002"  # Use OpenAI's embedding model
+        )
+        return response['data'][0]['embedding']
+    except Exception as e:
+        print(f"Error generating embedding for text: {text}\nError: {e}")
+        return None

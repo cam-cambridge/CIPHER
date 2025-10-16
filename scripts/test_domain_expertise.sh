@@ -3,10 +3,10 @@
 # Default values (matching the Python script defaults)
 MODEL_PATH="cemag/cipher_printing"
 QUESTIONS_PATH="prompts/3d_printing_questions.json"
-FACTS_PATH="src/RAG/processed_facts_openai.json"
 RAG=True
 CONTEXT=1
 RESULTS_PATH="./results"
+NUM_QUESTIONS=10
 OPENAI_API_KEY="..."
 
 # Check if API key is empty, not set, or equals "..."
@@ -45,6 +45,10 @@ while [[ $# -gt 0 ]]; do
             CONTEXT="$2"
             shift 2
             ;;
+        --num_questions)
+            NUM_QUESTIONS="$2"
+            shift 2
+            ;;
         -h|--help)
             echo "Usage: $0 [options]"
             echo ""
@@ -54,6 +58,7 @@ while [[ $# -gt 0 ]]; do
             echo "  --rag BOOL             RAG (default: False)"
             echo "  --results_path PATH     Results output path (default: ./results)"
             echo "  --context INT           Number of context facts (default: 5)"
+            echo "  --num_questions INT     Number of questions (default: 10)"
             echo "  -h, --help              Show this help message"
             exit 0
             ;;
@@ -73,6 +78,7 @@ echo "  Questions path: $QUESTIONS_PATH"
 echo "  RAG: $RAG"
 echo "  Context: $CONTEXT"
 echo "  Results path: $RESULTS_PATH"
+echo "  Num questions: $NUM_QUESTIONS"
 echo ""
 
 if [ "$RAG" = True ]; then
@@ -81,10 +87,12 @@ if [ "$RAG" = True ]; then
         --questions_path "$QUESTIONS_PATH" \
         --rag \
         --results_path "$RESULTS_PATH" \
-        --context "$CONTEXT"
+        --context "$CONTEXT" \
+        --num_questions "$NUM_QUESTIONS"
 else
     python ./src/tests/domain_expertise.py \
         --model_path "$MODEL_PATH" \
         --questions_path "$QUESTIONS_PATH" \
-        --results_path "$RESULTS_PATH"
+        --results_path "$RESULTS_PATH" \
+        --num_questions "$NUM_QUESTIONS"
 fi

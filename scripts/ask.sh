@@ -2,8 +2,8 @@
 
 # Default values (matching the Python script defaults)
 MODEL_PATH="cemag/cipher_printing"
-QUESTION="Ask your question here."
 RESULTS_PATH="./results"
+QUESTION="./prompts/ask.txt"
 
 # Parse named arguments
 while [[ $# -gt 0 ]]; do
@@ -25,7 +25,7 @@ while [[ $# -gt 0 ]]; do
             echo ""
             echo "Options:"
             echo "  --model_path PATH       Model path (default: cemag/cipher_printing)"
-            echo "  --question QUESTION     Question to ask (default: Ask your question here.)"
+            echo "  --question PATH         Question path (default: prompts/ask.txt)"
             echo "  --results_path PATH     Results output path (default: ./results)"
             echo "  -h, --help              Show this help message"
             exit 0

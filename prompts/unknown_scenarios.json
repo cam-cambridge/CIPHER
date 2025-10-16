@@ -1,0 +1,452 @@
+[
+    {
+        "Given Information": {
+            "actual_flowrate": "85%",
+            "firmware_flowrate": "105%",
+            "material": "TPU",
+            "current_temperature": "240°C",
+            "feed_rate": "2000 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "85%",
+            "firmware_flowrate": "100%",
+            "material": "ABS",
+            "current_temperature": "220°C",
+            "feed_rate": "1200 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "130%",
+            "firmware_flowrate": "90%",
+            "material": "PLA",
+            "current_temperature": "210°C",
+            "feed_rate": "1400 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "110%",
+            "firmware_flowrate": "95%",
+            "material": "PETG",
+            "current_temperature": "250°C",
+            "feed_rate": "1500 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "95%",
+            "firmware_flowrate": "100%",
+            "material": "Nylon",
+            "current_temperature": "265°C",
+            "feed_rate": "1300 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "120%",
+            "firmware_flowrate": "100%",
+            "material": "TPU",
+            "current_temperature": "220°C",
+            "feed_rate": "1400 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "105%",
+            "firmware_flowrate": "100%",
+            "material": "PLA",
+            "current_temperature": "205°C",
+            "feed_rate": "1500 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "80%",
+            "firmware_flowrate": "90%",
+            "material": "PETG",
+            "current_temperature": "240°C",
+            "feed_rate": "1100 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "110%",
+            "firmware_flowrate": "100%",
+            "material": "ABS",
+            "current_temperature": "220°C",
+            "feed_rate": "1300 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "95%",
+            "firmware_flowrate": "105%",
+            "material": "PLA",
+            "current_temperature": "200°C",
+            "feed_rate": "1600 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "130%",
+            "firmware_flowrate": "95%",
+            "material": "TPU",
+            "current_temperature": "230°C",
+            "feed_rate": "1400 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "70%",
+            "firmware_flowrate": "100%",
+            "material": "PLA",
+            "current_temperature": "190°C",
+            "feed_rate": "1100 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "120%",
+            "firmware_flowrate": "90%",
+            "material": "ABS",
+            "current_temperature": "230°C",
+            "feed_rate": "1500 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "85%",
+            "firmware_flowrate": "105%",
+            "material": "PETG",
+            "current_temperature": "240°C",
+            "feed_rate": "1350 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "115%",
+            "firmware_flowrate": "90%",
+            "material": "TPU",
+            "current_temperature": "215°C",
+            "feed_rate": "1250 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "110%",
+            "firmware_flowrate": "100%",
+            "material": "Nylon",
+            "current_temperature": "260°C",
+            "feed_rate": "1400 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "90%",
+            "firmware_flowrate": "105%",
+            "material": "PLA",
+            "current_temperature": "200°C",
+            "feed_rate": "1500 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "125%",
+            "firmware_flowrate": "100%",
+            "material": "ABS",
+            "current_temperature": "225°C",
+            "feed_rate": "1450 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "75%",
+            "firmware_flowrate": "100%",
+            "material": "PETG",
+            "current_temperature": "245°C",
+            "feed_rate": "1150 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "90%",
+            "firmware_flowrate": "95%",
+            "material": "PLA",
+            "current_temperature": "195°C",
+            "feed_rate": "1350 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "140%",
+            "firmware_flowrate": "100%",
+            "material": "TPU",
+            "current_temperature": "220°C",
+            "feed_rate": "1600 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "95%",
+            "firmware_flowrate": "105%",
+            "material": "PLA",
+            "current_temperature": "205°C",
+            "feed_rate": "1300 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "115%",
+            "firmware_flowrate": "95%",
+            "material": "Nylon",
+            "current_temperature": "255°C",
+            "feed_rate": "1450 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "110%",
+            "firmware_flowrate": "90%",
+            "material": "PETG",
+            "current_temperature": "235°C",
+            "feed_rate": "1500 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "85%",
+            "firmware_flowrate": "100%",
+            "material": "ABS",
+            "current_temperature": "210°C",
+            "feed_rate": "1250 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "125%",
+            "firmware_flowrate": "100%",
+            "material": "TPU",
+            "current_temperature": "225°C",
+            "feed_rate": "1350 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "105%",
+            "firmware_flowrate": "90%",
+            "material": "PLA",
+            "current_temperature": "215°C",
+            "feed_rate": "1400 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "90%",
+            "firmware_flowrate": "100%",
+            "material": "Nylon",
+            "current_temperature": "270°C",
+            "feed_rate": "1300 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "95%",
+            "firmware_flowrate": "100%",
+            "material": "PETG",
+            "current_temperature": "245°C",
+            "feed_rate": "1200 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "115%",
+            "firmware_flowrate": "90%",
+            "material": "ABS",
+            "current_temperature": "230°C",
+            "feed_rate": "1550 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "130%",
+            "firmware_flowrate": "100%",
+            "material": "PLA",
+            "current_temperature": "220°C",
+            "feed_rate": "1500 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "75%",
+            "firmware_flowrate": "95%",
+            "material": "TPU",
+            "current_temperature": "210°C",
+            "feed_rate": "1250 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "105%",
+            "firmware_flowrate": "100%",
+            "material": "PLA",
+            "current_temperature": "200°C",
+            "feed_rate": "1350 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "85%",
+            "firmware_flowrate": "90%",
+            "material": "PETG",
+            "current_temperature": "250°C",
+            "feed_rate": "1400 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "90%",
+            "firmware_flowrate": "105%",
+            "material": "ABS",
+            "current_temperature": "225°C",
+            "feed_rate": "1250 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "115%",
+            "firmware_flowrate": "100%",
+            "material": "TPU",
+            "current_temperature": "215°C",
+            "feed_rate": "1600 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "120%",
+            "firmware_flowrate": "95%",
+            "material": "Nylon",
+            "current_temperature": "260°C",
+            "feed_rate": "1450 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "85%",
+            "firmware_flowrate": "90%",
+            "material": "PLA",
+            "current_temperature": "205°C",
+            "feed_rate": "1300 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "125%",
+            "firmware_flowrate": "105%",
+            "material": "PETG",
+            "current_temperature": "240°C",
+            "feed_rate": "1550 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "105%",
+            "firmware_flowrate": "100%",
+            "material": "ABS",
+            "current_temperature": "220°C",
+            "feed_rate": "1350 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "140%",
+            "firmware_flowrate": "95%",
+            "material": "PLA",
+            "current_temperature": "230°C",
+            "feed_rate": "1500 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "95%",
+            "firmware_flowrate": "90%",
+            "material": "Nylon",
+            "current_temperature": "270°C",
+            "feed_rate": "1400 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "115%",
+            "firmware_flowrate": "105%",
+            "material": "TPU",
+            "current_temperature": "220°C",
+            "feed_rate": "1600 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "80%",
+            "firmware_flowrate": "100%",
+            "material": "PLA",
+            "current_temperature": "195°C",
+            "feed_rate": "1100 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "90%",
+            "firmware_flowrate": "100%",
+            "material": "ABS",
+            "current_temperature": "210°C",
+            "feed_rate": "1200 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "115%",
+            "firmware_flowrate": "100%",
+            "material": "PETG",
+            "current_temperature": "245°C",
+            "feed_rate": "1500 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "95%",
+            "firmware_flowrate": "100%",
+            "material": "PLA",
+            "current_temperature": "205°C",
+            "feed_rate": "1400 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "125%",
+            "firmware_flowrate": "100%",
+            "material": "Nylon",
+            "current_temperature": "255°C",
+            "feed_rate": "1500 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "110%",
+            "firmware_flowrate": "95%",
+            "material": "PETG",
+            "current_temperature": "235°C",
+            "feed_rate": "1450 mm/s"
+        }
+    },
+    {
+        "Given Information": {
+            "actual_flowrate": "90%",
+            "firmware_flowrate": "100%",
+            "material": "ABS",
+            "current_temperature": "225°C",
+            "feed_rate": "1250 mm/s"
+        }
+    }
+]

@@ -20,7 +20,9 @@ parser.add_argument('--expert', type=bool, default=True)
 parser.add_argument('--lora', type=bool, default=False)
 parser.add_argument('--questions_path', type=str, default='prompts/3d_printing_questions.json')
 parser.add_argument('--rag', action='store_true', default=False)
+parser.add_argument('--facts_path', type=str, default='src/RAG/processed_facts_openai.json')
 parser.add_argument('--context', type=int, default=5)
+parser.add_argument('--num_questions', type=int, default=10)
 parser.add_argument('--results_path', type=str, default='./results')
 args = parser.parse_args()
 
@@ -40,7 +42,7 @@ experiment={
 with open(args.questions_path, "r") as file:
     domain_questions = json.load(file)["questions"]
 domain_qs = []
-for question in domain_questions:
+for question in domain_questions[args.num_questions:]:
     domain_qs.append({"question": question})  # Placeholder for answers
 domain_questions_dataset = batchify(domain_qs, batch_size=8)
 
@@ -60,6 +62,7 @@ for batch in tqdm(domain_questions_dataset, desc="Processing domain questions ba
             processor,
             RAG = args.rag,
             context = args.context,
+            facts_path = args.facts_path,
         ).to(model.device)
         
         # Generate outputs

@@ -16,7 +16,7 @@ parser.add_argument('--language', type=bool, default=False)
 parser.add_argument('--vision', type=bool, default=False)
 parser.add_argument('--expert', type=bool, default=True)
 parser.add_argument('--lora', type=bool, default=False)
-parser.add_argument('--question', type=str, default='Ask your question here.')
+parser.add_argument('--question_path', type=str, default='./prompts/ask.txt')
 parser.add_argument('--results_path', type=str, default='./results')
 args = parser.parse_args()
 
@@ -29,8 +29,12 @@ experiment={
     'vision':args.vision,
     'expert':args.expert,
     'lora':args.lora,
-    'path':args.model_path
+    'path':"meta-llama/Llama-3.2-11B-Vision-Instruct"
 }
+
+# load question
+with open(args.question_path, "r") as file:
+    question = file.read()
 
 # load model
 model, processor, vision_expert = load_model_and_processor(
@@ -40,12 +44,12 @@ print("Model loaded successfully.")
 
 with torch.no_grad():
     # Prepare sample
-    batch_collated = val_collate_fn_ask([args.question], processor).to(model.device)
+    batch_collated = val_collate_fn_ask([question], processor).to(model.device)
 
     # Generate outputs
     outputs = model.generate(
         **batch_collated,
-        max_new_tokens=1024,
+        max_new_tokens=4096,
         temperature=0.2
     )
 
@@ -61,5 +65,6 @@ with torch.no_grad():
         'answers': [answer],
     })
     results_df.to_csv(f'{results_path}/ask_results.csv',
-                    index=True,
-                    index_label='question')
+                    index=False)
+
+print("Answer saved to: ", results_path)
