@@ -1,7 +1,7 @@
 # CIPHER : Control and Interpretation of Production via Hybrid Expertise and Reasoning 
 
 <p align="center">
-  <img src="assets/teaser.png" alt="CIPHER controlling a 3-D printer" width="100%">
+  <img src="repository/assets/teaser.png" alt="CIPHER controlling a 3-D printer" width="100%">
   <br>
   <em>Figure&nbsp;1 – CIPHER translates textual/visual prompts into printer commands, through physics- and geometry-informed reasoning.</em>
 </p>
@@ -9,7 +9,7 @@
 ### Autonomous design and printing
 
 <p align="center">
-  <img src="assets/geometries.png" alt="AI desings and prints its own parts" width="100%">
+  <img src="repository/assets/geometries.png" alt="AI desings and prints its own parts" width="100%">
   <br>
   <em>Figure&nbsp;2 – Send pics of your AI-generated printed parts at {cm2161@cam.ac.uk} to be featured in our project page!</em>
 </p>
