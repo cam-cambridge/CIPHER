@@ -395,3 +395,21 @@ def generate_RAG_embedding(text):
     except Exception as e:
         print(f"Error generating embedding for text: {text}\nError: {e}")
         return None
+
+def complexity_analysis(question):
+    """
+    Analyze the complexity of a geometry request.
+    """
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant that analyzes the complexity of a geometry request. Assess whether a shape can be constructed using a combination of geometric primitives. Tasks requiring more than four geometric primitives are considered too complex."},
+                {"role": "user", "content": f"Geometry request: {question}. Return True if the task is complex, False otherwise."}
+            ]
+        )
+        return response['choices'][0]['message']['content']
+    except Exception as e:
+        print(f"Error analyzing complexity of question: {question}\nError: {e}")
+        return None
+    

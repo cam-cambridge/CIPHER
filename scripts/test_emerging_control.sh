@@ -3,10 +3,8 @@
 # Default values (matching the Python script defaults)
 MODEL_PATH="cemag/cipher_printing"
 INSTRUCTIONS_PATH="./prompts/emerging_control.txt"
-
 SCENARIOS_PATH="./prompts/unknown_scenarios.json"
 NUM_QUESTIONS=10
-
 RAG=true
 CONTEXT=5
 OPENAI_API_KEY="..."

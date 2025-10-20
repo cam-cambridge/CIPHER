@@ -29,7 +29,7 @@ experiment={
     'vision':args.vision,
     'expert':args.expert,
     'lora':args.lora,
-    'path':"meta-llama/Llama-3.2-11B-Vision-Instruct"
+    'path': args.model_path
 }
 
 # load question
@@ -49,7 +49,7 @@ with torch.no_grad():
     # Generate outputs
     outputs = model.generate(
         **batch_collated,
-        max_new_tokens=4096,
+        max_new_tokens=4096*2, # <- higher limits for code generation
         temperature=0.2
     )
 
