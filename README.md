@@ -54,6 +54,8 @@ export HF_TOKEN=hf_********************************
 ```
 where ******************************** is your HF key (see https://huggingface.co/docs/hub/en/security-tokens)
 
+Installation of all packages and token setup should take <10 minutes.
+
 ## Train
 
 ```bash
@@ -61,7 +63,7 @@ bash scripts/train.sh
 ```
 The pre-trained [microsoft/ResNet-50](https://huggingface.co/microsoft/resnet-50) model and the pre-trained [meta-llama/Llama-3.2-1B](https://huggingface.co/meta-llama/Llama-3.2-1B) will be fetched from Hugging Face. The train dataset (subset) will be fetched from [cemag/tl-caxton](https://huggingface.co/datasets/cemag/tl-caxton).
 
-We train on 4 × NVIDIA A100 80GB. LoRA models can be trained with significantly fewer resources.
+We train on 4 × NVIDIA A100 80GB in less than a day. LoRA models can be trained with significantly fewer resources.
 
 Explicit Notes on Model Licensing & Commercial Use: While all code in this repository is released under an MIT License, our pretrained models may inherit restrictions from the underlying base models we use. Specifically, CIPHER is derived from Llama-3.2, and as such are subject to the Llama Community License.
 
@@ -114,8 +116,8 @@ Available scripts:
   </tbody>
 </table>
 
-
 Each script has a help menu accessible via `-h` or `--help` flag.
+Scripts output .csv files saved under RESULTS_PATH (by default ="./results") in scripts.
 
 Any of these experiments can run using
 ```bash
