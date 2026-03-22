@@ -25,6 +25,7 @@ CIPHER/
 │   ├── config.py             # Configuration and hyperparameters
 │   ├── model.py              # Main VLA model implementation
 │   ├── vexpert.py            # Vision expert for process monitoring
+│   ├── rag.py                # RAG context retrieval pipeline
 │   ├── train.py              # Training loops and callbacks
 │   ├── main.py               # Training loops and callbacks
 │   └── utils
@@ -123,6 +124,55 @@ Any of these experiments can run using
 ```bash
 bash scripts/{script.sh}
 ```
+<hr style="border: 2px solid gray;"></hr>
+
+## RAG (Retrieval-Augmented Generation)
+
+CIPHER can optionally augment its answers with domain-specific facts retrieved at inference time. The pipeline lives in `src/rag.py` and works in three stages:
+
+### 1. Fact store
+
+A pre-embedded knowledge base (`processed_facts_openai.json`) is hosted on the [cemag/tl-caxton](https://huggingface.co/datasets/cemag/tl-caxton) Hugging Face dataset. Each entry contains the original fact text and its embedding vector (generated with OpenAI `text-embedding-ada-002`). The file is downloaded and cached automatically on first use.
+
+### 2. Retrieval
+
+When a question is received, `ContextManager.find_relevant_facts()`:
+
+1. Embeds the question with `text-embedding-ada-002`.
+2. Computes cosine similarity against every fact embedding.
+3. Returns the top-*N* most similar facts (default *N* = 5) as a single context string.
+
+### 3. Injection
+
+`ContextManager.add_context_to_examples()` attaches the retrieved context to each example under the `context` key. When `format_data_with_system()` is called with `RAG=True`, the context is appended to the user message before it is sent to the model.
+
+### Usage
+
+RAG requires an OpenAI API key for embedding generation:
+
+```bash
+export OPENAI_API_KEY=sk-********************************
+```
+
+To run domain-expertise evaluation **with** RAG:
+
+```bash
+bash scripts/test_domain_expertise.sh --rag
+```
+
+To use `ContextManager` directly:
+
+```python
+from src.rag import ContextManager
+
+ctx = ContextManager()                          # downloads & caches facts
+facts = ctx.find_relevant_facts("What causes    # retrieve top-5 facts
+    under-extrusion in FDM?", num_facts=5)
+
+examples = [{"question": "Why is my print warping?"}]
+examples = ctx.add_context_to_examples(examples) # attach context
+```
+
 <hr style="border: 2px solid gray;"></hr>
 
 #### Citation
