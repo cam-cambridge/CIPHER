@@ -1,0 +1,40 @@
+Additive Manufacturing
+Additive Manufacturing > Materials
+Additive Manufacturing > Materials > Plastics
+Additive Manufacturing > Materials > Metals
+Additive Manufacturing > Materials > Ceramics
+Additive Manufacturing > Materials > Composites
+Additive Manufacturing > Technologies
+Additive Manufacturing > Technologies > Stereolithography (SLA)
+Additive Manufacturing > Technologies > Digital Light Processing (DLP)
+Additive Manufacturing > Technologies > Fused Deposition Modeling (FDM)
+Additive Manufacturing > Technologies > Selective Laser Sintering (SLS)
+Additive Manufacturing > Technologies > Direct Metal Laser Sintering (DMLS)
+Additive Manufacturing > Technologies > PolyJet Printing
+Additive Manufacturing > Technologies > Multi Jet Fusion (MJF)
+Additive Manufacturing > Applications
+Additive Manufacturing > Applications > Prototyping
+Additive Manufacturing > Applications > Tooling
+Additive Manufacturing > Applications > Functional Parts
+Additive Manufacturing > Applications > Custom Products
+Additive Manufacturing > Applications > Medical Implants
+Additive Manufacturing > Applications > Aerospace Components
+Additive Manufacturing > Process Steps
+Additive Manufacturing > Process Steps > Design
+Additive Manufacturing > Process Steps > Printing
+Additive Manufacturing > Process Steps > Post-Processing
+Additive Manufacturing > Process Steps > Quality Control
+Additive Manufacturing > Advantages
+Additive Manufacturing > Advantages > Design Freedom
+Additive Manufacturing > Advantages > Rapid Prototyping
+Additive Manufacturing > Advantages > Cost Efficiency for Small Batches
+Additive Manufacturing > Advantages > Customization
+Additive Manufacturing > Limitations
+Additive Manufacturing > Limitations > Material Limitations
+Additive Manufacturing > Limitations > Size Limitations
+Additive Manufacturing > Limitations > Speed Limitations
+Additive Manufacturing > Future Trends
+Additive Manufacturing > Future Trends > New Materials
+Additive Manufacturing > Future Trends > Process Improvements
+Additive Manufacturing > Future Trends > Industrial Scale Production
+Additive Manufacturing > Future Trends > Sustainability in Additive Manufacturing

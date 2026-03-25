@@ -45,17 +45,32 @@ class ContextManager:
 
     def load_processed_facts(self, filename, cache_dir="./.cache"):
         """
-        Load processed facts from Hugging Face dataset.
+        Load processed facts from a local JSON file or the Hugging Face dataset.
+
+        If *filename* points to an existing local file it is loaded directly;
+        otherwise the file is downloaded from the ``cemag/tl-caxton`` HF dataset.
         
         Args:
-            filename (str): Name of the JSON file in the HF dataset
+            filename (str): Path to a local JSON file **or** the filename inside
+                the HF dataset (e.g. ``processed_facts_openai.json``).
             cache_dir (str): Directory to cache the downloaded file
             
         Returns:
             list: Loaded data from JSON file
         """
+        local_path = os.path.join(os.getcwd(), filename) if not os.path.isabs(filename) else filename
+
+        if os.path.isfile(local_path):
+            try:
+                with open(local_path, 'r') as file:
+                    data = json.load(file)
+                print(f"✅ Loaded {len(data)} processed facts from {local_path}")
+                return data
+            except Exception as e:
+                print(f"❌ Error loading local facts file: {e}")
+                return []
+
         try:
-            # Download the file from Hugging Face dataset
             file_path = hf_hub_download(
                 repo_id="cemag/tl-caxton",
                 filename=filename,
@@ -63,7 +78,6 @@ class ContextManager:
                 cache_dir=cache_dir
             )
             
-            # Load the JSON data
             with open(file_path, 'r') as file:
                 data = json.load(file)
             
