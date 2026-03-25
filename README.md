@@ -231,7 +231,7 @@ python -m knowledge_generation "Additive Manufacturing" --skip-to 3
 
 | Option | Short | Default | Description |
 |--------|-------|---------|-------------|
-| `--output-dir` | `-o` | `./output/<topic_slug>` | Directory for all output artifacts |
+| `--output-dir` | `-o` | `knowledge_generation/output/<topic_slug>` | Directory for all output artifacts |
 | `--model` | `-m` | `gpt-4` | OpenAI chat model for hierarchy and fact generation |
 | `--embedding-provider` | `-e` | `openai` | Embedding backend: `openai` or `local` |
 | `--embedding-model` | | `sentence-t5-large` | Sentence-transformers model name (only with `--embedding-provider local`) |
@@ -256,7 +256,7 @@ To use your custom knowledge map with CIPHER, pass the path to `ContextManager`:
 from src.rag import ContextManager
 
 # Point to your locally generated facts instead of the default HF dataset
-ctx = ContextManager(facts_file_path="output/additive_manufacturing/processed_facts.json")
+ctx = ContextManager(facts_file_path="knowledge_generation/output/additive_manufacturing/processed_facts.json")
 
 facts = ctx.find_relevant_facts("What causes warping in FDM?", num_facts=5)
 ```

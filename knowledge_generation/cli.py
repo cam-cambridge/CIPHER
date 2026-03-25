@@ -85,9 +85,10 @@ def run(
     openai.api_key = api_key
 
     # ── Output directory ──
+    pkg_root = Path(__file__).resolve().parent
     if output_dir is None:
         slug = topic.lower().replace(" ", "_").replace("-", "_")
-        out = Path("output") / slug
+        out = pkg_root / "output" / slug
     else:
         out = Path(output_dir)
     out.mkdir(parents=True, exist_ok=True)
