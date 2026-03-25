@@ -1,40 +1,393 @@
-Additive Manufacturing
-Additive Manufacturing > Materials
-Additive Manufacturing > Materials > Plastics
-Additive Manufacturing > Materials > Metals
-Additive Manufacturing > Materials > Ceramics
-Additive Manufacturing > Materials > Composites
-Additive Manufacturing > Technologies
-Additive Manufacturing > Technologies > Stereolithography (SLA)
-Additive Manufacturing > Technologies > Digital Light Processing (DLP)
-Additive Manufacturing > Technologies > Fused Deposition Modeling (FDM)
-Additive Manufacturing > Technologies > Selective Laser Sintering (SLS)
-Additive Manufacturing > Technologies > Direct Metal Laser Sintering (DMLS)
-Additive Manufacturing > Technologies > PolyJet Printing
-Additive Manufacturing > Technologies > Multi Jet Fusion (MJF)
-Additive Manufacturing > Applications
-Additive Manufacturing > Applications > Prototyping
-Additive Manufacturing > Applications > Tooling
-Additive Manufacturing > Applications > Functional Parts
-Additive Manufacturing > Applications > Custom Products
-Additive Manufacturing > Applications > Medical Implants
-Additive Manufacturing > Applications > Aerospace Components
-Additive Manufacturing > Process Steps
-Additive Manufacturing > Process Steps > Design
-Additive Manufacturing > Process Steps > Printing
-Additive Manufacturing > Process Steps > Post-Processing
-Additive Manufacturing > Process Steps > Quality Control
-Additive Manufacturing > Advantages
-Additive Manufacturing > Advantages > Design Freedom
-Additive Manufacturing > Advantages > Rapid Prototyping
-Additive Manufacturing > Advantages > Cost Efficiency for Small Batches
-Additive Manufacturing > Advantages > Customization
-Additive Manufacturing > Limitations
-Additive Manufacturing > Limitations > Material Limitations
-Additive Manufacturing > Limitations > Size Limitations
-Additive Manufacturing > Limitations > Speed Limitations
-Additive Manufacturing > Future Trends
-Additive Manufacturing > Future Trends > New Materials
-Additive Manufacturing > Future Trends > Process Improvements
-Additive Manufacturing > Future Trends > Industrial Scale Production
-Additive Manufacturing > Future Trends > Sustainability in Additive Manufacturing
+General
+General > Overview
+General > Overview > Principles
+General > Overview > Applications
+General > Overview > Advantages
+General > Overview > Limitations
+General > Overview > Key Technologies
+General > Overview > Market Trends
+General > Overview > Environmental Impact
+General > Overview > Educational Use
+General > Overview > Industrial Use
+General > Overview > Future Directions
+General > Introduction
+General > Introduction > History
+General > Introduction > Development
+General > Introduction > Adoption
+General > Introduction > Key Milestones
+General > Introduction > Impact on Manufacturing
+General > Introduction > Accessibility
+General > Introduction > Research Areas
+General > Introduction > Open-source Contributions
+General > Introduction > Proprietary Systems
+General > Introduction > Comparison with Other Methods
+Applications
+Applications > Prototyping
+Applications > Prototyping > Product Development
+Applications > Prototyping > Testing
+Applications > Prototyping > Iterative Design
+Applications > Prototyping > Time to Market
+Applications > Prototyping > Cost Savings
+Applications > Prototyping > Customization
+Applications > Prototyping > Consumer Goods
+Applications > Prototyping > Automotive
+Applications > Prototyping > Healthcare
+Applications > Prototyping > Architecture
+Applications > End-use Parts
+Applications > End-use Parts > Small Batch Production
+Applications > End-use Parts > Spare Parts
+Applications > End-use Parts > Custom Tools
+Applications > End-use Parts > Functional Components
+Applications > End-use Parts > Wearable Devices
+Applications > End-use Parts > Consumer Electronics
+Applications > End-use Parts > Robotics
+Applications > End-use Parts > Aerospace
+Applications > End-use Parts > Energy Sector
+Applications > End-use Parts > Transportation
+History
+History > Inception
+History > Inception > Initial Research
+History > Inception > First Machines
+History > Inception > Pioneers
+History > Inception > Patent History
+History > Inception > Early Materials
+History > Inception > Initial Applications
+History > Inception > Technological Breakthroughs
+History > Inception > Community Involvement
+History > Inception > Academic Contributions
+History > Inception > Industry Adoption
+History > Evolution
+History > Evolution > Key Innovations
+History > Evolution > Material Advancements
+History > Evolution > Hardware Improvements
+History > Evolution > Software Development
+History > Evolution > Open-source Movement
+History > Evolution > Global Adoption
+History > Evolution > Educational Integration
+History > Evolution > Standardization
+History > Evolution > Challenges Faced
+History > Evolution > Market Growth
+Hardware
+Hardware > Printers
+Hardware > Printers > Desktop Models
+Hardware > Printers > Industrial Models
+Hardware > Printers > Customization
+Hardware > Printers > Automation Features
+Hardware > Printers > Sensor Integration
+Hardware > Printers > Maintenance
+Hardware > Printers > Performance Metrics
+Hardware > Printers > Accessibility
+Hardware > Printers > Price Ranges
+Hardware > Printers > Manufacturers
+Hardware > Components
+Hardware > Components > Extruder
+Hardware > Components > Extruder > Types
+Hardware > Components > Extruder > Performance
+Hardware > Components > Extruder > Material Compatibility
+Hardware > Components > Bed
+Hardware > Components > Bed > Heated Beds
+Hardware > Components > Bed > Surface Materials
+Hardware > Components > Bed > Adhesion Techniques
+Hardware > Components > Frame
+Hardware > Components > Frame > Material
+Hardware > Components > Frame > Rigidity
+Hardware > Components > Frame > Size
+Hardware > Components > Nozzle
+Hardware > Components > Nozzle > Diameters
+Hardware > Components > Nozzle > Materials
+Hardware > Components > Nozzle > Lifespan
+Hardware > Components > Motors
+Hardware > Components > Motors > Stepper
+Hardware > Components > Motors > Servo
+Hardware > Components > Motors > Precision
+Process Parameters
+Process Parameters > Settings
+Process Parameters > Settings > Layer Height
+Process Parameters > Settings > Nozzle Temperature
+Process Parameters > Settings > Bed Temperature
+Process Parameters > Settings > Print Speed
+Process Parameters > Settings > Infill Density
+Process Parameters > Settings > Wall Thickness
+Process Parameters > Settings > Support Structures
+Process Parameters > Settings > Cooling
+Process Parameters > Settings > Retraction
+Process Parameters > Settings > First Layer Settings
+Process Parameters > Optimization
+Process Parameters > Optimization > Fine Tuning
+Process Parameters > Optimization > Consistency
+Process Parameters > Optimization > Material-specific Settings
+Process Parameters > Optimization > Speed-Quality Balance
+Process Parameters > Optimization > Thermal Management
+Process Parameters > Optimization > Structural Integrity
+Process Parameters > Optimization > Surface Finish
+Process Parameters > Optimization > Complex Geometries
+Process Parameters > Optimization > Accuracy
+Process Parameters > Optimization > Automation
+Materials
+Materials > Polymers
+Materials > Polymers > PLA
+Materials > Polymers > ABS
+Materials > Polymers > PETG
+Materials > Polymers > Nylon
+Materials > Polymers > PC
+Materials > Polymers > TPU
+Materials > Polymers > PVA
+Materials > Polymers > HIPS
+Materials > Polymers > Carbon Fiber
+Materials > Polymers > Wood-fill
+Materials > Composites
+Materials > Composites > Fiber-reinforced
+Materials > Composites > Metal-filled
+Materials > Composites > Ceramic-filled
+Materials > Composites > Conductive
+Materials > Composites > Magnetic
+Materials > Composites > UV-reactive
+Materials > Composites > Biodegradable
+Materials > Composites > Recyclable
+Materials > Composites > Temperature-resistant
+Materials > Composites > Wear-resistant
+Materials > Advances topics
+Physics
+Physics > Thermal
+Physics > Thermal > Heat Transfer
+Physics > Thermal > Heat Transfer > Conduction
+Physics > Thermal > Heat Transfer > Convection
+Physics > Thermal > Heat Transfer > Radiation
+Physics > Thermal > Heat Transfer > Thermal Gradients
+Physics > Thermal > Heat Transfer > Boundary Conditions
+Physics > Thermal > Heat Transfer > Steady-State vs Transient
+Physics > Thermal > Heat Transfer > Thermal Insulation
+Physics > Thermal > Heat Transfer > Cooling Systems
+Physics > Thermal > Heat Transfer > Heat Accumulation
+Physics > Thermal > Heat Transfer > Nozzle Heat Distribution
+Physics > Thermal > Melting and Solidification
+Physics > Thermal > Melting and Solidification > Melting Rates
+Physics > Thermal > Melting and Solidification > Crystallization
+Physics > Thermal > Melting and Solidification > Amorphous vs Semi-Crystalline
+Physics > Thermal > Melting and Solidification > Glass Transition
+Physics > Thermal > Melting and Solidification > Thermal Stress
+Physics > Thermal > Melting and Solidification > Shrinkage
+Physics > Thermal > Melting and Solidification > Molecular Alignment
+Physics > Thermal > Melting and Solidification > Phase Transitions
+Physics > Thermal > Melting and Solidification > Temperature Cycles
+Physics > Thermal > Melting and Solidification > Thermal Expansion
+Physics > Thermal > Layer Bonding
+Physics > Thermal > Layer Bonding > Interfacial Adhesion
+Physics > Thermal > Layer Bonding > Diffusion Mechanisms
+Physics > Thermal > Layer Bonding > Reptation Theory
+Physics > Thermal > Layer Bonding > Cooling Rates Impact
+Physics > Thermal > Layer Bonding > Stress Accumulation
+Physics > Thermal > Layer Bonding > Anisotropic Properties
+Physics > Thermal > Layer Bonding > Failure Modes
+Physics > Thermal > Layer Bonding > Residual Stress
+Physics > Thermal > Layer Bonding > Post-process Heating
+Physics > Thermal > Layer Bonding > Thermal Imaging Analysis
+Physics > Rheology
+Physics > Rheology > Viscosity Changes
+Physics > Rheology > Viscosity Changes > Temperature Dependence
+Physics > Rheology > Viscosity Changes > Shear-thinning Behavior
+Physics > Rheology > Viscosity Changes > Nozzle Pressure Influence
+Physics > Rheology > Viscosity Changes > Extrusion Rate Effects
+Physics > Rheology > Viscosity Changes > Material Composition Impact
+Physics > Rheology > Viscosity Changes > Non-Newtonian Fluid Dynamics
+Physics > Rheology > Viscosity Changes > Thixotropy
+Physics > Rheology > Viscosity Changes > Rheological Models
+Physics > Rheology > Viscosity Changes > Dynamic vs Steady Viscosity
+Physics > Rheology > Viscosity Changes > Measurement Techniques
+Physics > Rheology > Flow Behavior
+Physics > Rheology > Flow Behavior > Laminar vs Turbulent
+Physics > Rheology > Flow Behavior > Reynolds Number
+Physics > Rheology > Flow Behavior > Capillary Effects
+Physics > Rheology > Flow Behavior > Nozzle Geometry Impact
+Physics > Rheology > Flow Behavior > Drag Forces
+Physics > Rheology > Flow Behavior > Volumetric Flow Rate
+Physics > Rheology > Flow Behavior > Elastic Recovery
+Physics > Rheology > Flow Behavior > Die Swell
+Physics > Rheology > Flow Behavior > Wettability
+Physics > Rheology > Flow Behavior > Flow Simulation
+Physics > Rheology > Material Properties
+Physics > Rheology > Material Properties > Elastic Modulus
+Physics > Rheology > Material Properties > Shear Modulus
+Physics > Rheology > Material Properties > Yield Stress
+Physics > Rheology > Material Properties > Poisson's Ratio
+Physics > Rheology > Material Properties > Creep Behavior
+Physics > Rheology > Material Properties > Damping Properties
+Physics > Rheology > Material Properties > Dynamic Moduli
+Physics > Rheology > Material Properties > Hysteresis
+Physics > Rheology > Material Properties > Stress Relaxation
+Physics > Rheology > Material Properties > Time-temperature Superposition
+Physics > Mechanical
+Physics > Mechanical > Stress and Strain
+Physics > Mechanical > Stress and Strain > Tensile Testing
+Physics > Mechanical > Stress and Strain > Compression Testing
+Physics > Mechanical > Stress and Strain > Flexural Testing
+Physics > Mechanical > Stress and Strain > Failure Criteria
+Physics > Mechanical > Stress and Strain > Fracture Mechanics
+Physics > Mechanical > Stress and Strain > Impact Resistance
+Physics > Mechanical > Stress and Strain > Fatigue Life
+Physics > Mechanical > Stress and Strain > Cyclic Loading
+Physics > Mechanical > Stress and Strain > Stress Concentrations
+Physics > Mechanical > Stress and Strain > Residual Deformation
+Physics > Mechanical > Dynamic Properties
+Physics > Mechanical > Dynamic Properties > Vibration Damping
+Physics > Mechanical > Dynamic Properties > Oscillatory Behavior
+Physics > Mechanical > Dynamic Properties > Dynamic Stability
+Physics > Mechanical > Dynamic Properties > Frequency Response
+Physics > Mechanical > Dynamic Properties > Energy Absorption
+Physics > Mechanical > Dynamic Properties > Shock Resistance
+Physics > Mechanical > Dynamic Properties > Rotational Dynamics
+Physics > Mechanical > Dynamic Properties > Impact Energy
+Physics > Mechanical > Dynamic Properties > Dynamic Modulus Measurement
+Physics > Mechanical > Dynamic Properties > Modal Analysis
+Physics > Mechanical > Layer Anisotropy
+Physics > Mechanical > Layer Anisotropy > Z-axis Weakness
+Physics > Mechanical > Layer Anisotropy > Infill Pattern Impact
+Physics > Mechanical > Layer Anisotropy > Orientation Effects
+Physics > Mechanical > Layer Anisotropy > Fiber Alignment
+Physics > Mechanical > Layer Anisotropy > Stress Redistribution
+Physics > Mechanical > Layer Anisotropy > Brittle vs Ductile Behavior
+Physics > Mechanical > Layer Anisotropy > Crack Propagation
+Physics > Mechanical > Layer Anisotropy > Delamination Risks
+Physics > Mechanical > Layer Anisotropy > Thermal-induced Anisotropy
+Physics > Mechanical > Layer Anisotropy > Optimization Techniques
+Physics > Material Science
+Physics > Material Science > Polymer Physics
+Physics > Material Science > Polymer Physics > Molecular Weight Distribution
+Physics > Material Science > Polymer Physics > Chain Entanglements
+Physics > Material Science > Polymer Physics > Crystallinity
+Physics > Material Science > Polymer Physics > Thermal Transitions
+Physics > Material Science > Polymer Physics > Additive Effects
+Physics > Material Science > Polymer Physics > Phase Separation
+Physics > Material Science > Polymer Physics > Cross-linking
+Physics > Material Science > Polymer Physics > Viscoelasticity
+Physics > Material Science > Polymer Physics > Degradation Mechanisms
+Physics > Material Science > Polymer Physics > Blending Techniques
+Physics > Material Science > Additive Composition
+Physics > Material Science > Additive Composition > Fillers and Reinforcements
+Physics > Material Science > Additive Composition > Plasticizers
+Physics > Material Science > Additive Composition > Stabilizers
+Physics > Material Science > Additive Composition > Colorants
+Physics > Material Science > Additive Composition > Flame Retardants
+Physics > Material Science > Additive Composition > Conductive Additives
+Physics > Material Science > Additive Composition > Anti-static Agents
+Physics > Material Science > Additive Composition > UV Stabilizers
+Physics > Material Science > Additive Composition > Biodegradable Additives
+Physics > Material Science > Additive Composition > Compatibility Studies
+Physics > Material Science > Interface Physics
+Physics > Material Science > Interface Physics > Wettability
+Physics > Material Science > Interface Physics > Surface Tension
+Physics > Material Science > Interface Physics > Adhesion Mechanisms
+Physics > Material Science > Interface Physics > Chemical Bonding
+Physics > Material Science > Interface Physics > Interface Strength
+Physics > Material Science > Interface Physics > Surface Treatments
+Physics > Material Science > Interface Physics > Plasma Treatments
+Physics > Material Science > Interface Physics > Adhesion Failure Modes
+Physics > Material Science > Interface Physics > Capillary Forces
+Physics > Material Science > Interface Physics > Interfacial Energy
+Physics > Simulation
+Physics > Simulation > Multi-physics Modeling
+Physics > Simulation > Multi-physics Modeling > Coupled Thermal-Mechanical
+Physics > Simulation > Multi-physics Modeling > Fluid-Structure Interaction
+Physics > Simulation > Multi-physics Modeling > Stress Analysis
+Physics > Simulation > Multi-physics Modeling > Heat Flow
+Physics > Simulation > Multi-physics Modeling > Thermal Expansion
+Physics > Simulation > Multi-physics Modeling > Rheological Behavior
+Physics > Simulation > Multi-physics Modeling > Dynamic Loading
+Physics > Simulation > Multi-physics Modeling > Fatigue Simulation
+Physics > Simulation > Multi-physics Modeling > Process Simulation
+Physics > Simulation > Multi-physics Modeling > Optimization Algorithms
+Physics > Simulation > Numerical Techniques
+Physics > Simulation > Numerical Techniques > Finite Element Analysis (FEA)
+Physics > Simulation > Numerical Techniques > Computational Fluid Dynamics (CFD)
+Physics > Simulation > Numerical Techniques > Thermal Simulations
+Physics > Simulation > Numerical Techniques > Rheological Simulations
+Physics > Simulation > Numerical Techniques > Particle-based Methods
+Physics > Simulation > Numerical Techniques > Mesh-free Techniques
+Physics > Simulation > Numerical Techniques > Boundary Element Method
+Physics > Simulation > Numerical Techniques > Monte Carlo Methods
+Physics > Simulation > Numerical Techniques > Optimization-based Models
+Physics > Simulation > Numerical Techniques > Model Validation
+Physics > Simulation > Parameter Sensitivity
+Physics > Simulation > Parameter Sensitivity > Thermal Gradients
+Physics > Simulation > Parameter Sensitivity > Viscosity Variations
+Physics > Simulation > Parameter Sensitivity > Cooling Rates
+Physics > Simulation > Parameter Sensitivity > Build Orientation
+Physics > Simulation > Parameter Sensitivity > Infill Patterns
+Physics > Simulation > Parameter Sensitivity > Wall Thickness
+Physics > Simulation > Parameter Sensitivity > Material Composition
+Physics > Simulation > Parameter Sensitivity > Layer Thickness
+Physics > Simulation > Parameter Sensitivity > Extrusion Speed
+Physics > Simulation > Parameter Sensitivity > Environmental Factors
+Chemistry
+Chemistry > Polymerization
+Chemistry > Polymerization > Types
+Chemistry > Polymerization > Mechanisms
+Chemistry > Polymerization > Applications
+Chemistry > Material Interactions
+Chemistry > Material Interactions > Additives
+Chemistry > Material Interactions > Stabilizers
+Chemistry > Material Interactions > Plasticizers
+Chemistry > Environmental Impact
+Chemistry > Environmental Impact > Degradation
+Chemistry > Environmental Impact > Recycling
+Chemistry > Environmental Impact > Sustainability
+Geometry
+Geometry > Shapes
+Geometry > Shapes > Basic
+Geometry > Shapes > Complex
+Geometry > Shapes > Organic
+Geometry > Mathematical Models
+Geometry > Mathematical Models > Parametric
+Geometry > Mathematical Models > Procedural
+Geometry > Mathematical Models > Simulations
+Geometry > File Formats
+Geometry > File Formats > STL
+Geometry > File Formats > OBJ
+Geometry > File Formats > AMF
+Issues & Defects
+Issues & Defects > Print Failures
+Issues & Defects > Print Failures > Layer Separation
+Issues & Defects > Print Failures > Warping
+Issues & Defects > Print Failures > Overheating
+Issues & Defects > Visual
+Issues & Defects > Visual > Blobs
+Issues & Defects > Visual > Zits
+Issues & Defects > Visual > Stringing
+Issues & Defects > Mechanical
+Issues & Defects > Mechanical > Weak Layers
+Issues & Defects > Mechanical > Cracks
+Issues & Defects > Mechanical > Deformations
+Issues & Defects > Extrusion problems > Over-extrusion
+Issues & Defects > Extrusion problems > Under-extrusion
+Advanced
+Advanced > Multi-material
+Advanced > Multi-material > Techniques
+Advanced > Multi-material > Challenges
+Advanced > Multi-material > Opportunities
+Advanced > Hybrid Systems
+Advanced > Hybrid Systems > Integration
+Advanced > Hybrid Systems > Functionality
+Advanced > Future Trends
+Advanced > Future Trends > AI Integration
+Advanced > Future Trends > Self-adjusting Systems
+Control
+Control > Software
+Control > Software > Slicing
+Control > Software > G-code Generation
+Control > Software > Error Correction
+Control > Automation
+Control > Automation > Self-calibration
+Control > Automation > Quality Assurance
+Control > Monitoring
+Control > Monitoring > Real-time Sensors
+Control > Monitoring > AI Analysis
+Post-processing
+Post-processing > Cleaning
+Post-processing > Cleaning > Support Removal
+Post-processing > Cleaning > Surface Smoothing
+Post-processing > Finishing
+Post-processing > Finishing > Painting
+Post-processing > Finishing > Polishing
+Post-processing > Enhancing
+Post-processing > Enhancing > Coatings
+Post-processing > Enhancing > Strengthening
